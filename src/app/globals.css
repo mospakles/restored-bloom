@@ -1,0 +1,138 @@
+@import "tailwindcss";
+
+@theme {
+  /* --- Typography --- */
+  --font-serif: "DM Serif Display", "Playfair Display", Georgia, serif;
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-body: "Inter", system-ui, -apple-system, sans-serif;
+
+  /* --- Cream — warmth, safety, home --- */
+  --color-cream-50: #FDFAF6;
+  --color-cream-100: #F6F0E6;
+  --color-cream-200: #EDE3D2;
+  --color-cream-300: #DDD0BA;
+  --color-cream-400: #C8B99E;
+  --color-cream-500: #B3A385;
+
+  /* --- Navy — authority, trust, depth --- */
+  --color-navy-50: #EEF2FF;
+  --color-navy-100: #DBE5F5;
+  --color-navy-200: #B4CAE8;
+  --color-navy-300: #7EA3D1;
+  --color-navy-400: #4A79B5;
+  --color-navy-500: #2C5498;
+  --color-navy-600: #1E3C6E;
+  --color-navy-700: #162D54;
+  --color-navy-800: #101F3C;
+  --color-navy-900: #0A1528;
+
+  /* --- Sage — healing, nature, calm --- */
+  --color-sage-50: #EEF4EC;
+  --color-sage-100: #D8E8D4;
+  --color-sage-200: #B4CCB0;
+  --color-sage-300: #8FAE8A;
+  --color-sage-400: #6F9469;
+  --color-sage-500: #5A7D55;
+  --color-sage-600: #476641;
+  --color-sage-700: #375031;
+  --color-sage-800: #273A22;
+  --color-sage-900: #182516;
+
+  /* --- Blush — warmth, tenderness, femininity --- */
+  --color-blush-50: #FBF2F0;
+  --color-blush-100: #F4DDD8;
+  --color-blush-200: #E8BAB3;
+  --color-blush-300: #D8978E;
+  --color-blush-400: #C9796E;
+  --color-blush-500: #B86356;
+  --color-blush-600: #9A4F44;
+  --color-blush-700: #7D3C33;
+
+  /* --- Gold — hope, dignity, faith --- */
+  --color-gold-50: #FDF8ED;
+  --color-gold-100: #F6EDD2;
+  --color-gold-200: #EDD8A3;
+  --color-gold-300: #E1C170;
+  --color-gold-400: #D4AB48;
+  --color-gold-500: #C29530;
+  --color-gold-600: #A07822;
+  --color-gold-700: #7F5E18;
+
+  /* --- Teal (refined, kept for trust) --- */
+  --color-teal-50: #EBF5F5;
+  --color-teal-100: #C9E8E8;
+  --color-teal-200: #9DD3D3;
+  --color-teal-300: #6BBDBD;
+  --color-teal-400: #3EA8A8;
+  --color-teal-500: #259292;
+  --color-teal-600: #1C7878;
+  --color-teal-700: #165E5E;
+  --color-teal-800: #0F4444;
+  --color-teal-900: #092B2B;
+}
+
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background-color: var(--color-cream-50);
+    color: #2C3040;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "kern" 1, "liga" 1;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+    line-height: 1.2;
+    font-weight: 400;
+  }
+
+  /* Editorial pull quote */
+  blockquote {
+    font-family: var(--font-serif);
+    font-style: italic;
+  }
+
+  /* Smooth focus */
+  :focus-visible {
+    outline: 2px solid var(--color-teal-600);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  @keyframes accordion-down {
+    from { height: 0; }
+    to { height: var(--radix-accordion-content-height); }
+  }
+  @keyframes accordion-up {
+    from { height: var(--radix-accordion-content-height); }
+    to { height: 0; }
+  }
+  .animate-accordion-down { animation: accordion-down 0.2s ease-out; }
+  .animate-accordion-up { animation: accordion-up 0.2s ease-out; }
+
+  /* Thin scrollbar for reading panels */
+  .scrollbar-thin::-webkit-scrollbar { width: 4px; }
+  .scrollbar-thin::-webkit-scrollbar-track { background: transparent; }
+  .scrollbar-thin::-webkit-scrollbar-thumb { background: var(--color-cream-300); border-radius: 2px; }
+}
