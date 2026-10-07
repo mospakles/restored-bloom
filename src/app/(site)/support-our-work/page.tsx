@@ -52,7 +52,7 @@ export default async function SupportOurWorkPage() {
           </SectionHeading>
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {AREAS.map(({ icon: Icon, title, body }) => (
-              <div key={title} className="rounded-3xl border border-cream-300 bg-white p-6">
+              <div key={title} className="rounded-3xl card-soft p-6">
                 <Icon className="h-7 w-7 text-rose-700" aria-hidden="true" />
                 <h3 className="mt-4 text-xl text-plum-900">{title}</h3>
                 <p className="mt-2 leading-relaxed text-plum-700">{body}</p>
@@ -71,7 +71,7 @@ export default async function SupportOurWorkPage() {
               we&apos;ll be in touch with ways to support us.
             </Notice>
           </div>
-          <div className="rounded-[2rem] border border-cream-300 bg-white p-5 sm:p-8">
+          <div className="rounded-[2rem] card-soft p-5 sm:p-8">
             <SponsorForm token={createFormToken()} />
           </div>
         </Container>

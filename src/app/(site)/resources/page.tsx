@@ -113,7 +113,7 @@ export default async function ResourcesPage({ searchParams }: { searchParams: Se
           <ul className="mt-4 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {resources.map((r) => (
               <li key={r.id}>
-                <article className="relative flex h-full flex-col rounded-3xl border border-cream-300 bg-white p-6 transition-shadow hover:shadow-md">
+                <article className="relative flex h-full flex-col rounded-3xl card-soft p-6 transition-shadow hover:shadow-md">
                   <Badge tone="rose" className="self-start">
                     {RESOURCE_CATEGORY_LABELS[r.category]}
                   </Badge>

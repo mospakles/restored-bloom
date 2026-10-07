@@ -15,7 +15,7 @@ type EventCard = Awaited<ReturnType<typeof listUpcomingEvents>>[number]
 
 function Card({ event }: { event: EventCard }) {
   return (
-    <article className="relative flex h-full flex-col rounded-3xl border border-cream-300 bg-white p-6 transition-shadow hover:shadow-md">
+    <article className="relative flex h-full flex-col rounded-3xl card-soft p-6 transition-shadow hover:shadow-md">
       {event.status === "CANCELLED" && (
         <Badge tone="rose" className="mb-3 self-start">
           Cancelled

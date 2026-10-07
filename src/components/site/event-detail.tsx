@@ -84,7 +84,7 @@ export function EventDetail({
           <Markdown>{event.description}</Markdown>
         </div>
         <aside className="space-y-6 lg:sticky lg:top-24 lg:self-start">
-          <div className="rounded-3xl border border-cream-300 bg-white p-6">
+          <div className="rounded-3xl card-soft p-6">
             <EventMeta event={event} />
             {event.audience && (
               <p className="mt-3 flex items-center gap-2 text-plum-800">
@@ -92,7 +92,7 @@ export function EventDetail({
               </p>
             )}
           </div>
-          <div className="rounded-3xl border border-cream-300 bg-white p-6" id="register">
+          <div className="rounded-3xl card-soft p-6" id="register">
             <h2 className="text-2xl text-plum-900">Registration</h2>
             <div className="mt-4">
               {availability.open ? (

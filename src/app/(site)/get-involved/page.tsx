@@ -30,7 +30,7 @@ export default async function GetInvolvedPage() {
             <Link
               key={title}
               href={href}
-              className="flex items-start gap-4 rounded-3xl border border-cream-300 bg-white p-5 transition-shadow hover:shadow-md"
+              className="flex items-start gap-4 rounded-3xl card-soft p-5 transition-shadow hover:shadow-md"
             >
               <Icon className="mt-1 h-6 w-6 shrink-0 text-rose-700" aria-hidden="true" />
               <span>
@@ -57,7 +57,7 @@ export default async function GetInvolvedPage() {
               we&apos;ll explain if the role is suitable.
             </Notice>
           </div>
-          <div className="rounded-[2rem] border border-cream-300 bg-white p-5 sm:p-8">
+          <div className="rounded-[2rem] card-soft p-5 sm:p-8">
             <VolunteerForm token={createFormToken()} />
           </div>
         </Container>
@@ -78,7 +78,7 @@ export default async function GetInvolvedPage() {
               both sides have confirmed it.
             </p>
           </div>
-          <div className="rounded-[2rem] border border-cream-300 bg-white p-5 sm:p-8">
+          <div className="rounded-[2rem] card-soft p-5 sm:p-8">
             <PartnerForm token={createFormToken()} />
           </div>
         </Container>

@@ -43,7 +43,7 @@ export default async function ProgrammesPage() {
           <ul className="flex flex-wrap gap-2">
             {PROGRAMMES.map((p) => (
               <li key={p.id}>
-                <a href={`#${p.id}`} className="inline-block rounded-full border border-cream-300 bg-white px-4 py-2 text-sm font-medium text-plum-800 hover:border-plum-300">
+                <a href={`#${p.id}`} className="inline-block rounded-full card-soft px-4 py-2 text-sm font-medium text-plum-800 hover:border-plum-300">
                   {p.title}
                 </a>
               </li>
@@ -57,7 +57,7 @@ export default async function ProgrammesPage() {
               key={p.id}
               id={p.id}
               aria-labelledby={`${p.id}-title`}
-              className="scroll-mt-28 rounded-[2rem] border border-cream-300 bg-white p-6 sm:p-10"
+              className="scroll-mt-28 rounded-[2rem] card-soft p-6 sm:p-10"
             >
               <div className="flex flex-wrap items-center gap-3">
                 <h2 id={`${p.id}-title`} className="text-3xl text-plum-900">

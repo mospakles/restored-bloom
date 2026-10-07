@@ -82,7 +82,7 @@ export default async function ContactPage() {
               </Link>
             </div>
           </div>
-          <div className="rounded-[2rem] border border-cream-300 bg-white p-5 sm:p-8">
+          <div className="rounded-[2rem] card-soft p-5 sm:p-8">
             <ContactForm token={createFormToken()} />
           </div>
         </Container>

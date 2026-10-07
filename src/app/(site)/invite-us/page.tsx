@@ -53,7 +53,7 @@ export default async function InviteUsPage() {
           <SectionHeading eyebrow="Where we can help" title="Invite us to your…" />
           <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {WHERE_WE_HELP.map((w) => (
-              <li key={w.title} className="flex gap-4 rounded-3xl border border-cream-300 bg-white p-6">
+              <li key={w.title} className="flex gap-4 rounded-3xl card-soft p-6">
                 <BloomMark className="h-7 w-7 shrink-0 text-rose-400" />
                 <div>
                   <h3 className="text-xl text-plum-900">{w.title}</h3>
@@ -74,7 +74,7 @@ export default async function InviteUsPage() {
         <Container>
           <div className="grid gap-5 sm:grid-cols-2">
             {FORMAT.map(({ icon: Icon, title, body }) => (
-              <div key={title} className="rounded-3xl border border-cream-300 bg-white p-6 sm:p-8">
+              <div key={title} className="rounded-3xl card-soft p-6 sm:p-8">
                 <Icon className="h-7 w-7 text-rose-700" aria-hidden="true" />
                 <h2 className="mt-4 text-2xl text-plum-900">{title}</h2>
                 <p className="mt-2 leading-relaxed text-plum-800">{body}</p>
@@ -109,7 +109,7 @@ export default async function InviteUsPage() {
               </p>
             </div>
           </div>
-          <div className="rounded-[2rem] border border-cream-300 bg-white p-5 sm:p-8">
+          <div className="rounded-[2rem] card-soft p-5 sm:p-8">
             <OutreachRequestForm token={createFormToken()} />
           </div>
         </Container>

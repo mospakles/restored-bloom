@@ -16,7 +16,19 @@ export function SiteFooter({ settings }: { settings: SiteSettings }) {
   ).filter(([, url]) => url)
 
   return (
-    <footer className="mt-24 border-t border-cream-300 bg-cream-100">
+    <footer className="relative mt-24 overflow-hidden border-t border-cream-300 bg-gradient-to-b from-cream-100 to-[#f3eadc]">
+      <svg
+        viewBox="0 0 100 100"
+        className="pointer-events-none absolute -bottom-28 -right-20 h-[26rem] w-[26rem] text-rose-200/45 motion-safe:animate-[sway_18s_ease-in-out_infinite]"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <g transform="translate(50 50)" fill="currentColor">
+          {[0, 72, 144, 216, 288].map((r) => (
+            <ellipse key={r} cx="0" cy="-22" rx="13" ry="22" transform={`rotate(${r})`} />
+          ))}
+        </g>
+      </svg>
       <div className="bg-plum-900 text-cream-100">
         <Container className="flex flex-col gap-2 py-4 text-sm sm:flex-row sm:items-center sm:justify-between">
           <p>
@@ -28,7 +40,7 @@ export function SiteFooter({ settings }: { settings: SiteSettings }) {
           </Link>
         </Container>
       </div>
-      <Container className="grid gap-10 py-14 md:grid-cols-[1.3fr_2fr]">
+      <Container className="relative grid gap-10 py-16 md:grid-cols-[1.3fr_2fr]">
         <div>
           <Logo />
           <p className="mt-4 max-w-sm leading-relaxed text-plum-700">{SITE.tagline}</p>
@@ -83,7 +95,7 @@ export function SiteFooter({ settings }: { settings: SiteSettings }) {
           ))}
         </div>
       </Container>
-      <div className="border-t border-cream-300">
+      <div className="relative border-t border-cream-300">
         <Container className="flex flex-col gap-2 py-6 text-sm text-plum-600 sm:flex-row sm:justify-between">
           <p>
             © {new Date().getFullYear()} {SITE.name}. Founded by {SITE.founder}.

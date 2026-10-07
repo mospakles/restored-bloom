@@ -48,7 +48,7 @@ export function AnalyticsConsent({ domain, src }: { domain: string; src: string 
         <div
           role="region"
           aria-label="Analytics consent"
-          className="fixed inset-x-3 bottom-3 z-50 mx-auto max-w-xl rounded-2xl border border-cream-300 bg-white p-4 shadow-lg sm:inset-x-6 sm:p-5"
+          className="fixed inset-x-3 bottom-3 z-50 mx-auto max-w-xl rounded-2xl card-soft p-4 shadow-lg sm:inset-x-6 sm:p-5"
         >
           <p className="text-sm leading-relaxed text-plum-800">
             May we count anonymous page visits to understand how the site is used? We don&apos;t use advertising cookies

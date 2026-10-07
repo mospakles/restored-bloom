@@ -72,7 +72,7 @@ export default async function AboutPage() {
           <SectionHeading eyebrow="Our values" title="What guides our work" />
           <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
             {VALUES.map((v) => (
-              <li key={v.title} className="rounded-3xl border border-cream-300 bg-white p-6">
+              <li key={v.title} className="rounded-3xl card-soft p-6">
                 <BloomMark className="h-7 w-7 text-rose-400" />
                 <h3 className="mt-4 text-xl text-plum-900">{v.title}</h3>
                 <p className="mt-2 leading-relaxed text-plum-700">{v.body}</p>
@@ -90,7 +90,7 @@ export default async function AboutPage() {
 
       <section className="py-16 sm:py-20">
         <Container className="grid gap-6 md:grid-cols-2">
-          <div className="rounded-[2rem] border border-cream-300 bg-white p-8">
+          <div className="rounded-[2rem] card-soft p-8">
             <ShieldCheck className="h-8 w-8 text-sage-700" aria-hidden="true" />
             <h2 className="mt-4 text-2xl text-plum-900">Our approach to safeguarding</h2>
             <div className="mt-3 space-y-3 leading-relaxed text-plum-800">
@@ -106,7 +106,7 @@ export default async function AboutPage() {
               Read our safeguarding statement
             </Link>
           </div>
-          <div className="rounded-[2rem] border border-cream-300 bg-white p-8">
+          <div className="rounded-[2rem] card-soft p-8">
             <Handshake className="h-8 w-8 text-rose-700" aria-hidden="true" />
             <h2 className="mt-4 text-2xl text-plum-900">Working together</h2>
             <div className="mt-3 space-y-3 leading-relaxed text-plum-800">

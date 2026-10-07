@@ -50,7 +50,7 @@ export default async function SupportPage() {
                   <h3 className="font-sans text-sm font-bold uppercase tracking-[0.14em] text-plum-900">{KIND_LABELS[g.kind]}</h3>
                   <ul className="mt-4 space-y-4">
                     {g.items.map((c) => (
-                      <li key={c.id} className="rounded-3xl border border-cream-300 bg-white p-6">
+                      <li key={c.id} className="rounded-3xl card-soft p-6">
                         <div className="flex flex-wrap items-center gap-2">
                           <h4 className="font-display text-xl text-plum-900">{c.name}</h4>
                           {c.area && <Badge tone="cream">{c.area}</Badge>}

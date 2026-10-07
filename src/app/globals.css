@@ -48,11 +48,56 @@
 
   --animate-bloom-in: bloom-in 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
   --animate-sway: sway 9s ease-in-out infinite;
+  --animate-drift: drift 14s ease-in-out infinite;
+  --animate-float: float 7s ease-in-out infinite;
+  --animate-breathe: breathe 10s ease-in-out infinite;
+
+  --shadow-soft: 0 1px 2px rgb(52 27 49 / 0.04), 0 12px 32px -16px rgb(52 27 49 / 0.18);
+  --shadow-lift: 0 2px 4px rgb(52 27 49 / 0.05), 0 24px 48px -20px rgb(52 27 49 / 0.28);
 
   @keyframes bloom-in {
     from {
       opacity: 0;
       transform: translateY(14px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes drift {
+    0%,
+    100% {
+      transform: translate3d(0, 0, 0) rotate(0deg);
+    }
+    50% {
+      transform: translate3d(10px, 18px, 0) rotate(24deg);
+    }
+  }
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+  }
+  @keyframes breathe {
+    0%,
+    100% {
+      transform: scale(1);
+      opacity: 0.85;
+    }
+    50% {
+      transform: scale(1.06);
+      opacity: 1;
+    }
+  }
+  @keyframes reveal-up {
+    from {
+      opacity: 0;
+      transform: translateY(28px);
     }
     to {
       opacity: 1;
@@ -79,6 +124,8 @@
   body {
     font-family: var(--font-sans);
     background-color: var(--color-cream-50);
+    /* A barely-there paper grain gives flat surfaces warmth. */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.2 0 0 0 0 0.1 0 0 0 0 0.19 0 0 0 0.035 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     color: var(--color-plum-900);
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
@@ -123,6 +170,39 @@
 }
 
 @layer components {
+  /* Calm entrance as sections scroll into view. Progressive: browsers without
+     scroll-driven animations (or with reduced motion) simply show content. */
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .reveal {
+        animation: reveal-up linear both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 70%;
+      }
+    }
+  }
+
+  /* Soft card surface used across the site. */
+  .card-soft {
+    background-color: rgb(255 255 255 / 0.82);
+    border: 1px solid var(--color-cream-300);
+    box-shadow: var(--shadow-soft);
+    transition:
+      box-shadow 0.35s ease,
+      transform 0.35s ease,
+      border-color 0.35s ease;
+  }
+  .card-soft:where(:hover, :focus-within).card-hover {
+    box-shadow: var(--shadow-lift);
+    transform: translateY(-3px);
+    border-color: var(--color-rose-200);
+  }
+
+  /* Arch shape used for decorative frames. */
+  .arch {
+    border-radius: 999px 999px 2.5rem 2.5rem;
+  }
+
   /* Long-form reading content rendered from Markdown */
   .prose-bloom {
     color: var(--color-plum-900);

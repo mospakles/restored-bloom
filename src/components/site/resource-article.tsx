@@ -44,7 +44,7 @@ export function ResourceArticle({ resource, banner }: { resource: Props; banner?
       </header>
       <Container className="max-w-3xl py-12">
         {resource.file && (
-          <div className="mb-10 flex flex-col gap-4 rounded-3xl border border-cream-300 bg-white p-5 sm:flex-row sm:items-center sm:justify-between">
+          <div className="mb-10 flex flex-col gap-4 rounded-3xl card-soft p-5 sm:flex-row sm:items-center sm:justify-between">
             <div>
               <p className="font-semibold text-plum-900">{resource.file.filename}</p>
               <p className="text-sm text-plum-600">{size(resource.file.size)}</p>

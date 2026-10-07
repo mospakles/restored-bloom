@@ -6,12 +6,21 @@ export function Container({ className, ...props }: React.HTMLAttributes<HTMLDivE
   return <div className={cn("mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8", className)} {...props} />
 }
 
-export function Eyebrow({ className, ...props }: React.HTMLAttributes<HTMLParagraphElement>) {
+export function Eyebrow({ className, children, ...props }: React.HTMLAttributes<HTMLParagraphElement>) {
   return (
     <p
-      className={cn("mb-3 text-xs font-bold uppercase tracking-[0.18em] text-rose-700", className)}
+      className={cn("mb-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-rose-700", className)}
       {...props}
-    />
+    >
+      <svg viewBox="0 0 20 20" className="h-3.5 w-3.5 shrink-0 text-rose-400" aria-hidden="true" focusable="false">
+        <g transform="translate(10 10)" fill="currentColor">
+          {[0, 72, 144, 216, 288].map((r) => (
+            <ellipse key={r} cx="0" cy="-4.6" rx="3" ry="4.8" transform={`rotate(${r})`} />
+          ))}
+        </g>
+      </svg>
+      {children}
+    </p>
   )
 }
 
