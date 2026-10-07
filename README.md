@@ -143,11 +143,13 @@ Any Node.js host works (Vercel, Render, Railway, Fly.io or a VPS), with a manage
 2. Set the environment variables from `.env.example` in your host. `DATABASE_URL`, `BETTER_AUTH_SECRET`, `BETTER_AUTH_URL` and `NEXT_PUBLIC_SITE_URL` are required **at build time and runtime**.
 3. Build command: `npm run build`. Start command: `npm start`.
 4. Apply migrations on each deploy: `npm run db:deploy` (`prisma migrate deploy`). Run it as a release step, or once from your machine pointed at the production database.
+
+   **On Railway** this is automatic: `railway.json` sets the start command, runs `npm run db:deploy` as the pre-deploy step, and uses `/api/health` (which checks the database) as the health check. Settings in `railway.json` take precedence over the dashboard.
 5. Run `npm run admin:create` once against production.
 6. Serve over HTTPS on your own domain, and set both URL variables to that domain.
 7. Optional: schedule a monthly reminder to run **Dashboard → Data retention**.
 
-If the host sits behind a proxy or CDN, make sure it forwards `X-Forwarded-For` so that rate limiting sees real client IPs.
+Rate limiting reads the visitor IP from the first `X-Forwarded-For` entry, which Railway's proxy controls. If you add a CDN such as Cloudflare in front of the site, set `CLIENT_IP_HEADER` (e.g. `cf-connecting-ip`) so visitors can't fake their address.
 
 ## Credentials you need
 

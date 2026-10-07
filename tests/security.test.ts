@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest"
 import { can, permissionsFor } from "@/lib/permissions"
-import { checkFormToken, createFormToken } from "@/lib/security"
+import { checkFormToken, clientIp, createFormToken } from "@/lib/security"
 import { csvCell, toCsv } from "@/lib/csv"
 import { detectFileType, safeFilename } from "@/server/resources"
 import { registrationAvailability } from "@/server/events"
@@ -44,6 +44,24 @@ describe("form timing tokens", () => {
     expect(checkFormToken(t, 1_000_000 + 7 * 60 * 60 * 1000)).toBe("expired")
     expect(checkFormToken(t.replace(/^\d+/, "999999"), 1_010_000)).toBe("invalid")
     expect(checkFormToken(undefined)).toBe("invalid")
+  })
+})
+
+describe("client IP", () => {
+  it("uses the first X-Forwarded-For entry by default", () => {
+    expect(clientIp(new Headers({ "x-forwarded-for": "198.51.100.4, 10.0.0.1" }))).toBe("198.51.100.4")
+    expect(clientIp(new Headers({ "x-real-ip": "198.51.100.9" }))).toBe("198.51.100.9")
+    expect(clientIp(new Headers())).toBe("unknown")
+  })
+  it("uses only the configured header when CLIENT_IP_HEADER is set", () => {
+    process.env.CLIENT_IP_HEADER = "cf-connecting-ip"
+    try {
+      const h = new Headers({ "x-forwarded-for": "203.0.113.66", "cf-connecting-ip": "198.51.100.7" })
+      expect(clientIp(h)).toBe("198.51.100.7")
+      expect(clientIp(new Headers({ "x-forwarded-for": "203.0.113.66" }))).toBe("unknown")
+    } finally {
+      delete process.env.CLIENT_IP_HEADER
+    }
   })
 })
 

@@ -11,13 +11,23 @@ export function randomToken(bytes = 32): string {
   return randomBytes(bytes).toString("base64url")
 }
 
+/**
+ * The client IP as reported by the hosting platform's proxy.
+ *
+ * Default: the first X-Forwarded-For entry. Railway's edge proxy controls that
+ * header, so visitors cannot spoof it there (verified against the live site).
+ * Behind a different proxy or CDN, set CLIENT_IP_HEADER to the header it
+ * guarantees, e.g. "cf-connecting-ip" for Cloudflare.
+ */
+export function clientIp(h: Headers): string {
+  const custom = process.env.CLIENT_IP_HEADER?.trim().toLowerCase()
+  if (custom) return h.get(custom)?.split(",")[0]?.trim() || "unknown"
+  return h.get("x-forwarded-for")?.split(",")[0]?.trim() || h.get("x-real-ip")?.trim() || "unknown"
+}
+
 /** Keyed hash of the client IP. Raw IP addresses are never stored. */
 export async function clientFingerprint(): Promise<string> {
-  const h = await headers()
-  const ip =
-    h.get("x-forwarded-for")?.split(",")[0]?.trim() ||
-    h.get("x-real-ip")?.trim() ||
-    "unknown"
+  const ip = clientIp(await headers())
   return createHmac("sha256", env.hashSecret).update(ip).digest("hex").slice(0, 32)
 }
 
