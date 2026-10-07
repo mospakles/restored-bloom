@@ -51,7 +51,7 @@ export function describeDetails(type: EnquiryTypeKey, details: unknown): { label
           ["Estimated participants", text(d.participants)],
           ["Support requested", pick(OUTREACH_SUPPORT, d.support)],
           ["Preferred dates", text(d.preferredDates)],
-          ["Involves under-18s", d.involvesChildren === undefined ? "" : d.involvesChildren ? "Yes — child-safeguarding arrangements apply" : "No"],
+          ["Involves under-18s", d.involvesChildren === undefined ? "" : d.involvesChildren ? "Yes, child-safeguarding arrangements apply" : "No"],
         ]
       case "VOLUNTEER":
         return [

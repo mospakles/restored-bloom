@@ -21,7 +21,7 @@ type Result = { message?: string; errors?: FieldErrors } | void
 /**
  * Runs a dashboard mutation and converts failures into form state. Every
  * mutation re-checks the signed-in user (and the service layer re-checks the
- * specific permission) — the UI hiding a button is never the only control.
+ * specific permission), the UI hiding a button is never the only control.
  */
 async function run(prev: FormState, formData: FormData, fn: () => Promise<Result>, success = "Saved"): Promise<FormState> {
   const submission = (prev.submission ?? 0) + 1

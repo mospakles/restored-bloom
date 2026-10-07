@@ -3,6 +3,7 @@ import Link from "next/link"
 import { notFound, redirect } from "next/navigation"
 import { connection } from "next/server"
 import { Container } from "@/components/ui/misc"
+import { PageHero } from "@/components/site/blocks"
 import { Button, buttonVariants } from "@/components/ui/button"
 import { confirmSubscription, unsubscribe } from "@/server/newsletter"
 
@@ -32,13 +33,16 @@ export default async function NewsletterActionPage({ params, searchParams }: Pro
   if (result && result in RESULTS) {
     const copy = RESULTS[result as keyof typeof RESULTS]
     return (
-      <Container className="max-w-xl py-24 text-center">
-        <h1 className="text-4xl text-plum-900">{copy.title}</h1>
-        <p className="mt-4 text-lg text-plum-700">{copy.body}</p>
-        <Link href="/" className={buttonVariants({ className: "mt-8" })}>
-          Back to the homepage
-        </Link>
-      </Container>
+      <>
+        <PageHero accent="sage" art="letter" eyebrow="Newsletter" title={copy.title}>
+          <p>{copy.body}</p>
+        </PageHero>
+        <Container className="max-w-xl py-16">
+          <Link href="/" className={buttonVariants()}>
+            Back to the homepage
+          </Link>
+        </Container>
+      </>
     )
   }
 
@@ -50,19 +54,22 @@ export default async function NewsletterActionPage({ params, searchParams }: Pro
   }
 
   return (
-    <Container className="max-w-xl py-24 text-center">
-      <h1 className="text-4xl text-plum-900">{action === "confirm" ? "Confirm your subscription" : "Unsubscribe"}</h1>
-      <p className="mt-4 text-lg text-plum-700">
-        {action === "confirm"
-          ? "Press the button below to start receiving occasional updates from Restored Bloom."
-          : "Press the button below to stop receiving newsletter emails from Restored Bloom."}
-      </p>
-      <form action={perform} className="mt-8">
-        <input type="hidden" name="token" value={token} />
-        <Button type="submit" size="lg">
-          {action === "confirm" ? "Confirm subscription" : "Unsubscribe"}
-        </Button>
-      </form>
-    </Container>
+    <>
+      <PageHero accent="sage" art="letter" eyebrow="Newsletter" title={action === "confirm" ? "Confirm your subscription" : "Unsubscribe"}>
+        <p>
+          {action === "confirm"
+            ? "Press the button below to start receiving occasional updates from Restored Bloom."
+            : "Press the button below to stop receiving newsletter emails from Restored Bloom."}
+        </p>
+      </PageHero>
+      <Container className="max-w-xl py-16">
+        <form action={perform}>
+          <input type="hidden" name="token" value={token} />
+          <Button type="submit" size="lg">
+            {action === "confirm" ? "Confirm subscription" : "Unsubscribe"}
+          </Button>
+        </form>
+      </Container>
+    </>
   )
 }

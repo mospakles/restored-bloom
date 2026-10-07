@@ -29,7 +29,7 @@ const createInput = z.object({
 
 /**
  * Low-level account creation shared by the dashboard and the CLI scripts.
- * Does not check permissions — callers must.
+ * Does not check permissions, callers must.
  */
 export async function createAccount(data: { name: string; email: string; role: string; password: string }) {
   const ctx = await auth.$context

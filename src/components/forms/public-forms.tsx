@@ -32,7 +32,7 @@ function PrivacyAck() {
   return (
     <Acknowledge name="privacy">
       I have read the{" "}
-      <Link href="/policies/privacy" className="font-semibold text-rose-700 underline underline-offset-2" target="_blank">
+      <Link href="/policies/privacy" className="font-semibold text-lagoon-700 underline underline-offset-2" target="_blank">
         privacy notice
       </Link>{" "}
       and agree to Restored Bloom using these details to respond to this enquiry.
@@ -47,7 +47,7 @@ function Grid({ children }: { children: React.ReactNode }) {
 function RequiredNote() {
   return (
     <p className="text-sm text-plum-600">
-      Fields marked <span className="text-rose-700">*</span> are required.
+      Fields marked <span className="text-lagoon-700">*</span> are required.
     </p>
   )
 }
@@ -67,7 +67,7 @@ export function OutreachRequestForm({ token }: { token: string }) {
           <TextField name="organisation" label="Name of organisation or group" required autoComplete="organization" />
           <SelectField name="hostType" label="Type of organisation or group" options={HOST_TYPES} required />
         </Grid>
-        <TextField name="location" label="Location" hint="Area, city and state — or 'online'" required />
+        <TextField name="location" label="Location" hint="Area, city and state, or 'online'" required />
       </fieldset>
       <fieldset className="space-y-5">
         <legend className="mb-1 text-lg font-display text-plum-900">Your details</legend>
@@ -124,7 +124,7 @@ export function VolunteerForm({ token }: { token: string }) {
       <TextField
         name="background"
         label="Relevant professional background"
-        hint="A short line is enough — e.g. 'Primary teacher', 'Registered counsellor'. Please don't upload or share documents at this stage."
+        hint="A short line is enough, e.g. 'Primary teacher', 'Registered counsellor'. Please don't upload or share documents at this stage."
         maxLength={500}
       />
       <TextField name="availability" label="Availability" hint="e.g. weekends, school holidays, a few hours a month" maxLength={300} />
@@ -233,7 +233,7 @@ export function EventRegistrationForm({ token, eventId, placesLeft }: { token: s
       </div>
       <Acknowledge name="privacy">
         I agree to Restored Bloom using these details to manage my registration, as described in the{" "}
-        <Link href="/policies/privacy" className="font-semibold text-rose-700 underline underline-offset-2" target="_blank">
+        <Link href="/policies/privacy" className="font-semibold text-lagoon-700 underline underline-offset-2" target="_blank">
           privacy notice
         </Link>
         .

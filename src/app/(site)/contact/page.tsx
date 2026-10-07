@@ -35,14 +35,14 @@ export default async function ContactPage() {
 
   return (
     <>
-      <PageHero eyebrow="Contact" title="Get in touch">
+      <PageHero accent="sage" art="letter" eyebrow="Contact" title="Get in touch">
         <p>
           To invite us to your school, community or organisation, please use the{" "}
-          <Link href="/invite-us#enquire" className="font-semibold text-rose-700 underline underline-offset-4">
+          <Link href="/invite-us#enquire" className="font-semibold text-lagoon-700 underline underline-offset-4">
             invitation form
           </Link>
           . For volunteering and partnerships, see{" "}
-          <Link href="/get-involved" className="font-semibold text-rose-700 underline underline-offset-4">
+          <Link href="/get-involved" className="font-semibold text-lagoon-700 underline underline-offset-4">
             get involved
           </Link>
           .
@@ -55,7 +55,7 @@ export default async function ContactPage() {
             <dl className="mt-8 space-y-5">
               {details.map(({ icon: Icon, label, value, href }) => (
                 <div key={label} className="flex gap-3">
-                  <Icon className="mt-1 h-5 w-5 shrink-0 text-rose-700" aria-hidden="true" />
+                  <Icon className="mt-1 h-5 w-5 shrink-0 text-lagoon-700" aria-hidden="true" />
                   <div>
                     <dt className="text-sm font-semibold text-plum-600">{label}</dt>
                     <dd className="text-lg text-plum-900">

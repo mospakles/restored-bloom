@@ -12,7 +12,7 @@ export async function notifyStaff(kind: string, reference: string, path: string)
   if (recipients.length === 0) return
   await sendEmail({
     to: recipients,
-    subject: `New ${kind} — ${reference}`,
+    subject: `New ${kind}: ${reference}`,
     text: emailBody([
       `A new ${kind} has been received (reference ${reference}).`,
       "",

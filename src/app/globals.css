@@ -4,14 +4,14 @@
   --font-display: var(--font-fraunces), "Iowan Old Style", Georgia, serif;
   --font-sans: var(--font-figtree), ui-sans-serif, system-ui, sans-serif;
 
-  /* Cream — page and surface backgrounds */
+  /* Cream: page and surface backgrounds */
   --color-cream-50: #fdfaf5;
   --color-cream-100: #f8f1e6;
   --color-cream-200: #f0e5d4;
   --color-cream-300: #e3d4bc;
   --color-cream-400: #cdb994;
 
-  /* Plum — primary text and brand */
+  /* Plum: primary text and brand */
   --color-plum-50: #f8f1f6;
   --color-plum-100: #efe1eb;
   --color-plum-200: #dcc2d6;
@@ -24,7 +24,7 @@
   --color-plum-900: #341b31;
   --color-plum-950: #220f20;
 
-  /* Muted rose — warmth and emphasis (700+ for text on cream) */
+  /* Muted rose: warmth and emphasis (700+ for text on cream) */
   --color-rose-50: #fbf1f0;
   --color-rose-100: #f6e1e0;
   --color-rose-200: #ecc6c7;
@@ -35,7 +35,7 @@
   --color-rose-700: #823f4b;
   --color-rose-800: #6a333d;
 
-  /* Sage — restrained accents */
+  /* Sage: restrained accents */
   --color-sage-50: #f2f5ee;
   --color-sage-100: #e3eadb;
   --color-sage-200: #cad6bc;
@@ -46,11 +46,43 @@
   --color-sage-700: #485640;
   --color-sage-800: #3a4534;
 
+  /* Lagoon: calm blue-green, a nod to Lagos (balances the warm palette) */
+  --color-lagoon-50: #eef4f5;
+  --color-lagoon-100: #d7e6e9;
+  --color-lagoon-200: #b2ccd2;
+  --color-lagoon-300: #87adb6;
+  --color-lagoon-400: #5f8d98;
+  --color-lagoon-500: #46717c;
+  --color-lagoon-600: #375a64;
+  --color-lagoon-700: #2d4950;
+  --color-lagoon-800: #243a40;
+  --color-lagoon-900: #182a2f;
+
+  /* Gold: warmth and hope */
+  --color-gold-50: #fdf7ec;
+  --color-gold-100: #f9ead0;
+  --color-gold-200: #f3d39b;
+  --color-gold-300: #e9bc72;
+  --color-gold-400: #dba552;
+  --color-gold-500: #c9893a;
+  --color-gold-600: #a86f2c;
+  --color-gold-700: #7f5422;
+
   --animate-bloom-in: bloom-in 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
   --animate-sway: sway 9s ease-in-out infinite;
   --animate-drift: drift 14s ease-in-out infinite;
   --animate-float: float 7s ease-in-out infinite;
   --animate-breathe: breathe 10s ease-in-out infinite;
+  --animate-twinkle: twinkle 4s ease-in-out infinite;
+  --animate-marquee: marquee 60s linear infinite;
+  --animate-rise: rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  --animate-draw: draw 2.6s cubic-bezier(0.4, 0, 0.2, 1) both;
+  --animate-fall: fall 2.4s ease-in infinite;
+  --animate-glide: glide 9s ease-in-out infinite;
+  --animate-pop: pop 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  --animate-wiggle: wiggle 0.6s ease-in-out;
+  --animate-letter-wave: letter-wave 3.2s ease-in-out infinite;
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
 
   --shadow-soft: 0 1px 2px rgb(52 27 49 / 0.04), 0 12px 32px -16px rgb(52 27 49 / 0.18);
   --shadow-lift: 0 2px 4px rgb(52 27 49 / 0.05), 0 24px 48px -20px rgb(52 27 49 / 0.28);
@@ -92,6 +124,100 @@
     50% {
       transform: scale(1.06);
       opacity: 1;
+    }
+  }
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(26px);
+      filter: blur(6px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+      filter: none;
+    }
+  }
+  @keyframes pop {
+    0% {
+      opacity: 0;
+      transform: scale(0.3) rotate(-20deg);
+    }
+    100% {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes wiggle {
+    0%,
+    100% {
+      transform: rotate(0deg);
+    }
+    25% {
+      transform: rotate(-6deg) scale(1.04);
+    }
+    75% {
+      transform: rotate(5deg) scale(1.04);
+    }
+  }
+  @keyframes letter-wave {
+    0%,
+    60%,
+    100% {
+      transform: translateY(0);
+    }
+    30% {
+      transform: translateY(-0.12em) rotate(-3deg);
+    }
+  }
+  /* For paths with pathLength="1" and stroke-dasharray="1": the line draws itself. */
+  @keyframes draw {
+    from {
+      stroke-dashoffset: 1;
+    }
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+  @keyframes fall {
+    0% {
+      transform: translateY(0);
+      opacity: 0;
+    }
+    20% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(46px);
+      opacity: 0;
+    }
+  }
+  @keyframes glide {
+    0%,
+    100% {
+      transform: translate(0, 0) rotate(0deg);
+    }
+    50% {
+      transform: translate(-14px, -10px) rotate(-4deg);
+    }
+  }
+  @keyframes twinkle {
+    0%,
+    100% {
+      opacity: 0.25;
+      transform: scale(0.7);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.1);
     }
   }
   @keyframes reveal-up {
@@ -147,12 +273,12 @@
   }
 
   ::selection {
-    background: var(--color-rose-200);
+    background: var(--color-gold-200);
     color: var(--color-plum-950);
   }
 
   :focus-visible {
-    outline: 3px solid var(--color-rose-600);
+    outline: 3px solid var(--color-lagoon-500);
     outline-offset: 3px;
     border-radius: 6px;
   }
@@ -170,16 +296,22 @@
 }
 
 @layer components {
-  /* Calm entrance as sections scroll into view. Progressive: browsers without
-     scroll-driven animations (or with reduced motion) simply show content. */
-  @supports (animation-timeline: view()) {
-    @media (prefers-reduced-motion: no-preference) {
-      .reveal {
-        animation: reveal-up linear both;
-        animation-timeline: view();
-        animation-range: entry 0% entry 70%;
-      }
-    }
+  /* Staggered entrance for hero content: children rise in one after another. */
+  .stagger > * {
+    animation: var(--animate-rise);
+  }
+  .stagger > *:nth-child(2) { animation-delay: 0.12s; }
+  .stagger > *:nth-child(3) { animation-delay: 0.24s; }
+  .stagger > *:nth-child(4) { animation-delay: 0.36s; }
+  .stagger > *:nth-child(5) { animation-delay: 0.48s; }
+  .stagger > *:nth-child(6) { animation-delay: 0.6s; }
+
+  /* Hover: icons give a small, friendly nudge. */
+  .group:hover .icon-nudge {
+    transform: rotate(-8deg) scale(1.08);
+  }
+  .icon-nudge {
+    transition: transform 0.4s cubic-bezier(0.3, 1.6, 0.5, 1);
   }
 
   /* Soft card surface used across the site. */
@@ -192,10 +324,60 @@
       transform 0.35s ease,
       border-color 0.35s ease;
   }
+  /* Playful hover: cards lift and tilt towards the pointer (vars set in reveal.tsx). */
   .card-soft:where(:hover, :focus-within).card-hover {
     box-shadow: var(--shadow-lift);
-    transform: translateY(-3px);
-    border-color: var(--color-rose-200);
+    transform: perspective(900px) rotateX(calc(var(--tilt-y, 0) * -1deg)) rotateY(calc(var(--tilt-x, 0) * 1deg))
+      translateY(-5px);
+    border-color: var(--color-gold-200);
+    transition:
+      box-shadow 0.35s ease,
+      transform 0.25s ease-out,
+      border-color 0.35s ease;
+  }
+
+  /* Scroll reveals (driven by src/components/site/reveal.tsx). Elements are only
+     hidden once JavaScript has marked them as pending, so content is never lost. */
+  .reveal-pending {
+    opacity: 0;
+    transform: translateY(40px) scale(0.94) rotate(-1.2deg);
+  }
+  .reveal-in {
+    opacity: 1;
+    transform: none;
+    transition:
+      opacity 0.7s ease-out,
+      transform 0.9s var(--ease-spring),
+      box-shadow 0.35s ease,
+      border-color 0.35s ease;
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+
+  /* Step numbers pop in once their card arrives. */
+  .reveal-in .step-num {
+    animation: var(--animate-pop);
+    animation-delay: calc(var(--reveal-delay, 0ms) + 250ms);
+  }
+
+  /* Pointer parallax for hero art (vars set on <html> by reveal.tsx). */
+  .parallax-soft {
+    transform: translate3d(calc(var(--px, 0) * 14px), calc(var(--py, 0) * 10px), 0);
+    transition: transform 0.6s ease-out;
+  }
+
+  /* Hover wiggle for playful elements. */
+  .wiggle-hover:hover {
+    animation: var(--animate-wiggle);
+  }
+
+  /* Petals released by clicking a [data-burst] button. */
+  .petal-burst {
+    position: fixed;
+    z-index: 60;
+    width: 10px;
+    height: 16px;
+    border-radius: 50%;
+    pointer-events: none;
   }
 
   /* Arch shape used for decorative frames. */

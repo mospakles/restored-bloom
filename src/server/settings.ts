@@ -27,7 +27,7 @@ export const siteSettingsSchema = z.object({
   facebook: optionalUrl,
   x: optionalUrl,
   linkedin: optionalUrl,
-  /** Optional registration line, e.g. a CAC number — only once verified. */
+  /** Optional registration line, e.g. a CAC number, only once verified. */
   registrationNotice: z.string().trim().max(200).default(""),
   founderBio: z.string().trim().max(4000).default(""),
   founderBioApproved: z.boolean().default(false),

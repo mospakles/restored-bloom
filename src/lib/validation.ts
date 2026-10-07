@@ -89,7 +89,7 @@ export const OUTREACH_SUPPORT = {
   "community-talk": "Community awareness talk or workshop",
   "event-speaker": "Speaking at an event, service or programme",
   campaign: "Awareness campaign or outreach day",
-  "not-sure": "Not sure — we would like to talk it through",
+  "not-sure": "Not sure, we would like to talk it through",
 } as const
 
 export const outreachRequestSchema = z.object({

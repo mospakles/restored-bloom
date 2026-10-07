@@ -18,7 +18,7 @@ model User {
   email         String    @unique
   emailVerified Boolean   @default(false)
   image         String?
-  /// ADMIN | EDITOR | COORDINATOR — see src/lib/permissions.ts
+  /// ADMIN, EDITOR or COORDINATOR. See src/lib/permissions.ts
   role          String    @default("COORDINATOR")
   /// Deactivated users cannot sign in.
   active        Boolean   @default(true)
@@ -323,8 +323,8 @@ model Subscriber {
 
 // ─── Operations ──────────────────────────────────────────────────────────────
 
-/// Audit trail. Never store submission contents here — identifiers and
-/// changed field names only.
+/// Audit trail. Never store submission contents here, only identifiers and
+/// changed field names.
 model AuditLog {
   id         String   @id @default(cuid())
   actorId    String?

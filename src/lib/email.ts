@@ -35,7 +35,7 @@ export async function sendEmail(message: EmailMessage): Promise<SendResult> {
   const t = getTransporter()
   if (!t || !env.smtp) {
     if (process.env.NODE_ENV !== "production") {
-      console.info(`[email] Not configured — skipped "${message.subject}"`)
+      console.info(`[email] Not configured, skipped "${message.subject}"`)
     }
     return { sent: false, reason: "not-configured" }
   }
@@ -48,7 +48,7 @@ export async function sendEmail(message: EmailMessage): Promise<SendResult> {
   }
 }
 
-const SIGNATURE = "\n\n— Restored Bloom\nThis mailbox is not monitored for emergencies."
+const SIGNATURE = "\n\nRestored Bloom\nThis mailbox is not monitored for emergencies."
 
 export function emailBody(lines: string[]): string {
   return lines.join("\n") + SIGNATURE

@@ -29,7 +29,7 @@ export default async function PolicyPage({ params }: { params: Params }) {
   const page = await getPage(slug)
   return (
     <>
-      <PageHero eyebrow="Policies" title={page.title} />
+      <PageHero accent="lagoon" art="shield" eyebrow="Policies" title={page.title} />
       <Container className="max-w-3xl py-12">
         <ReviewBanner reviewed={page.reviewed} />
         <Markdown>{page.body}</Markdown>

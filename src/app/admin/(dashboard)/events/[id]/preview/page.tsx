@@ -22,11 +22,12 @@ export default async function PreviewEventPage({ params }: { params: Promise<{ i
   return (
     <div className="-mx-4 -my-8 sm:-mx-8 lg:-mx-10">
       <EventDetail
+        underHeader={false}
         event={e}
         availability={availability}
         registration={<p className="text-sm text-plum-700">The registration form appears here for visitors.</p>}
         banner={
-          <Notice tone="pending" title={`Preview — status: ${e.status.toLowerCase()}`} className="mb-6">
+          <Notice tone="pending" title={`Preview (status: ${e.status.toLowerCase()})`} className="mb-6">
             This is how the event will look to visitors.{" "}
             <Link href={`/admin/events/${e.id}`} className="font-semibold underline">
               Back to editing

@@ -39,7 +39,7 @@ export const env = {
     const from = optional("EMAIL_FROM")
     const user = optional("SMTP_USER")
     let pass = optional("SMTP_PASSWORD")
-    // A username without a password is an unfinished setup — treat email as not configured.
+    // A username without a password is an unfinished setup, treat email as not configured.
     if (!host || !from || (user && !pass)) return null
     // Google shows App Passwords in groups of four ("abcd efgh ijkl mnop"); spaces are not part of it.
     if (pass && host === "smtp.gmail.com") pass = pass.replace(/\s+/g, "")

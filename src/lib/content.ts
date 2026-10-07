@@ -1,6 +1,6 @@
 /**
  * Public site copy that does not change often. Copy here is DRAFT launch copy
- * written for founder review — see LAUNCH_CHECKLIST.md. Contact details,
+ * written for founder review, see LAUNCH_CHECKLIST.md. Contact details,
  * founder biography, programme status, policies and support contacts are
  * editable in the admin dashboard instead.
  */
@@ -9,7 +9,7 @@ export const SITE = {
   name: "Restored Bloom",
   tagline: "Creating safe spaces. Restoring hope. Helping lives bloom.",
   description:
-    "Restored Bloom is a Lagos-based foundation for sexual abuse awareness, prevention education and survivor support — ready to bring age-appropriate outreach to schools, faith communities, organisations and communities wherever help is needed.",
+    "Restored Bloom is a Lagos-based foundation for sexual abuse awareness, prevention education and survivor support, ready to bring age-appropriate outreach to schools, faith communities, organisations and communities wherever help is needed.",
   founder: "Motunrayo Odusina",
   city: "Lagos, Nigeria",
 } as const
@@ -71,7 +71,7 @@ export const PROGRAMMES: Programme[] = [
     id: "primary",
     title: "Body-safety awareness for children",
     short: "Gentle, age-appropriate sessions that help younger children understand body safety.",
-    audience: "Children of primary-school age — in schools, churches, mosques, clubs and community programmes, with their own trusted adults present",
+    audience: "Children of primary-school age, in schools, churches, mosques, clubs and community programmes, with their own trusted adults present",
     summary:
       "Short, interactive sessions using stories, songs and simple activities. Children learn that their bodies belong to them, that some secrets should never be kept, and that safe adults will always want to help.",
     topics: [
@@ -94,7 +94,7 @@ export const PROGRAMMES: Programme[] = [
     topics: [
       "Personal boundaries and consent",
       "Healthy and unhealthy relationships",
-      "Recognising grooming, pressure and manipulation — online and offline",
+      "Recognising grooming, pressure and manipulation, online and offline",
       "How to support a friend who confides in you",
       "Where to seek help, and what happens when you do",
     ],
@@ -146,7 +146,7 @@ export const PROGRAMMES: Programme[] = [
       "Clear, respectful signposting information",
       "Awareness of survivors' dignity, choice and confidentiality",
     ],
-    format: "Partnership development — no direct clinical services are offered",
+    format: "Partnership development - no direct clinical services are offered",
     icon: "heart",
   },
 ]
@@ -162,7 +162,7 @@ export const OUTREACH_STEPS = [
   },
   {
     title: "Preparing together",
-    body: "We share session outlines in advance, agree how any concerns will be handled, and — for sessions with children — make sure parents are informed.",
+    body: "We share session outlines in advance, agree how any concerns will be handled, and for sessions with children, make sure parents are informed.",
   },
   {
     title: "Delivery",
@@ -177,16 +177,16 @@ export const OUTREACH_STEPS = [
 /** The kinds of places Restored Bloom can be invited to. */
 export const WHERE_WE_HELP = [
   { title: "Schools", body: "Primary and secondary schools, colleges and their parent communities." },
-  { title: "Faith communities", body: "Churches, mosques and faith groups — services, youth meetings and family programmes." },
+  { title: "Faith communities", body: "Churches, mosques and faith groups services, youth meetings and family programmes." },
   { title: "Communities", body: "Residents' associations, community leaders, markets and town-hall gatherings." },
   { title: "Youth groups", body: "Clubs, camps, youth fellowships and after-school programmes." },
-  { title: "Organisations & workplaces", body: "NGOs, businesses and public bodies — staff awareness and safeguarding briefings." },
+  { title: "Organisations & workplaces", body: "NGOs, businesses and public bodies, with staff awareness and safeguarding briefings." },
   { title: "Families & parents", body: "Parents' groups, PTAs and caregivers who want to protect the children in their care." },
 ] as const
 
 export const VALUES = [
   { title: "Safety first", body: "Every decision begins with the wellbeing of children and young people." },
-  { title: "Dignity", body: "Survivors are treated with respect, belief and compassion — never as stories to be told." },
+  { title: "Dignity", body: "Survivors are treated with respect, belief and compassion, never as stories to be told." },
   { title: "Honesty", body: "We say clearly what we do, what we don't do, and what is still being built." },
   { title: "Hope", body: "Healing is possible. We hold space for hope without minimising pain." },
   { title: "Collaboration", body: "We work alongside schools, faith communities, families, organisations and qualified professionals rather than alone." },

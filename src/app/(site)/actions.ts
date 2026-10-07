@@ -57,14 +57,14 @@ const ENQUIRY_ARRAYS: Partial<Record<EnquiryType, string[]>> = {
 
 const SUCCESS_COPY: Record<EnquiryType, { title: string; message: string }> = {
   OUTREACH: {
-    title: "Thank you — your invitation has been received",
+    title: "Thank you! Your invitation has been received",
     message:
       "A member of our team will contact you to talk through what you need, your dates and the safeguarding arrangements. Nothing is confirmed until we have spoken with you.",
   },
   VOLUNTEER: {
     title: "Thank you for offering your time",
     message:
-      "We'll be in touch about current opportunities. Please remember that any role involving children requires screening and approval first — submitting this form does not authorise anyone to work with children.",
+      "We'll be in touch about current opportunities. Please remember that any role involving children requires screening and approval first, submitting this form does not authorise anyone to work with children.",
   },
   PARTNER: {
     title: "Thank you for your partnership enquiry",
@@ -75,9 +75,9 @@ const SUCCESS_COPY: Record<EnquiryType, { title: string; message: string }> = {
     message: "We'll be in touch to talk through sponsorship options. We have not taken any payment or commitment from you.",
   },
   CONTACT: {
-    title: "Thank you — your message has been received",
+    title: "Thank you! Your message has been received",
     message:
-      "We aim to reply within a few working days. This form isn't monitored as an emergency channel — if anyone is in immediate danger, please contact local emergency services.",
+      "We aim to reply within a few working days. This form isn't monitored as an emergency channel, if anyone is in immediate danger, please contact local emergency services.",
   },
 }
 
@@ -145,7 +145,7 @@ export async function submitEventRegistration(prev: FormState, formData: FormDat
       case "duplicate":
         return {
           status: "error",
-          message: "This email address is already registered for this event — there's no need to register again.",
+          message: "This email address is already registered for this event, there's no need to register again.",
           errors: { email: "Already registered for this event" },
           values,
           submission,

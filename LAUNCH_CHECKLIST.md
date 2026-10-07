@@ -34,7 +34,7 @@ Work through this list before telling people about the website. Items marked ⚠
 
 ## 5. Policies ⚠️ (need professional review)
 
-Each page shows a "Draft — awaiting review" banner until it is marked reviewed in **Dashboard → Pages & policies**.
+Each page shows a "Draft, awaiting review" banner until it is marked reviewed in **Dashboard → Pages & policies**.
 
 - [ ] **Privacy notice**: review against the Nigeria Data Protection Act 2023 with a data protection adviser. Confirm the contact for privacy requests and how long records are kept.
 - [ ] **Safeguarding statement**: develop it into a full safeguarding policy with a qualified safeguarding professional before any session with children. Name a designated safeguarding lead.
@@ -70,7 +70,7 @@ Each page shows a "Draft — awaiting review" banner until it is marked reviewed
 - [ ] Send a test: use "Forgotten your password?" on the sign-in page and check the email arrives.
 - [ ] If you want a newsletter, tick "Show the newsletter signup" in Site settings once email works.
 
-## 10. Online donations (optional — not set up)
+## 10. Online donations (optional, not set up)
 
 The site does **not** take payments. The Support Our Work page invites sponsorship enquiries instead.
 

@@ -9,10 +9,10 @@ export function Container({ className, ...props }: React.HTMLAttributes<HTMLDivE
 export function Eyebrow({ className, children, ...props }: React.HTMLAttributes<HTMLParagraphElement>) {
   return (
     <p
-      className={cn("mb-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-rose-700", className)}
+      className={cn("mb-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-lagoon-700", className)}
       {...props}
     >
-      <svg viewBox="0 0 20 20" className="h-3.5 w-3.5 shrink-0 text-rose-400" aria-hidden="true" focusable="false">
+      <svg viewBox="0 0 20 20" className="h-3.5 w-3.5 shrink-0 text-gold-400" aria-hidden="true" focusable="false">
         <g transform="translate(10 10)" fill="currentColor">
           {[0, 72, 144, 216, 288].map((r) => (
             <ellipse key={r} cx="0" cy="-4.6" rx="3" ry="4.8" transform={`rotate(${r})`} />
@@ -26,7 +26,7 @@ export function Eyebrow({ className, children, ...props }: React.HTMLAttributes<
 
 const BADGE_TONES = {
   plum: "bg-plum-100 text-plum-800",
-  rose: "bg-rose-100 text-rose-800",
+  rose: "bg-rose-100 text-lagoon-800",
   sage: "bg-sage-100 text-sage-800",
   cream: "bg-cream-200 text-plum-800",
   amber: "bg-amber-100 text-amber-900",
@@ -54,7 +54,7 @@ const NOTICE = {
   info: { icon: Info, cls: "border-plum-200 bg-plum-50 text-plum-900" },
   warning: { icon: AlertTriangle, cls: "border-amber-300 bg-amber-50 text-amber-950" },
   success: { icon: CheckCircle2, cls: "border-sage-300 bg-sage-50 text-sage-800" },
-  pending: { icon: Clock, cls: "border-rose-200 bg-rose-50 text-rose-800" },
+  pending: { icon: Clock, cls: "border-rose-200 bg-rose-50 text-lagoon-800" },
 } as const
 
 export function Notice({
@@ -83,7 +83,7 @@ export function Notice({
 }
 
 /** Marks content that the founder still needs to confirm. Visible to the public by design, until approved. */
-export function DraftFlag({ children = "Draft — awaiting founder confirmation" }: { children?: React.ReactNode }) {
+export function DraftFlag({ children = "Draft, awaiting founder confirmation" }: { children?: React.ReactNode }) {
   return (
     <Badge tone="amber" className="align-middle">
       <Clock className="h-3 w-3" aria-hidden="true" />

@@ -2,6 +2,7 @@ import { connection } from "next/server"
 import { SiteHeader } from "@/components/site/header"
 import { SiteFooter } from "@/components/site/footer"
 import { AnalyticsConsent } from "@/components/site/analytics-consent"
+import { SiteMotion } from "@/components/site/reveal"
 import { getSettings } from "@/server/settings"
 
 export default async function SiteLayout({ children }: { children: React.ReactNode }) {
@@ -23,6 +24,7 @@ export default async function SiteLayout({ children }: { children: React.ReactNo
         {children}
       </main>
       <SiteFooter settings={settings} />
+      <SiteMotion />
       {analyticsDomain && <AnalyticsConsent domain={analyticsDomain} src={analyticsSrc} />}
     </>
   )

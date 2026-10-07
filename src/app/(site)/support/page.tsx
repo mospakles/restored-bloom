@@ -23,7 +23,7 @@ export default async function SupportPage() {
 
   return (
     <>
-      <PageHero eyebrow="Finding support" title={page.title === "Finding support" ? "You deserve to be safe and supported" : page.title}>
+      <PageHero accent="sage" art="shelter" eyebrow="Finding support" title={page.title === "Finding support" ? "You deserve to be safe and supported" : page.title}>
         <p>
           Whatever has happened, you are not alone, and it is not your fault. This page explains some ways to seek
           help. Restored Bloom is not an emergency, medical or counselling service.
@@ -58,12 +58,12 @@ export default async function SupportPage() {
                         <p className="mt-2 leading-relaxed text-plum-800">{c.description}</p>
                         <div className="mt-3 flex flex-wrap gap-x-6 gap-y-2">
                           {c.phone && (
-                            <a href={`tel:${c.phone.replace(/[^\d+]/g, "")}`} className="inline-flex items-center gap-1.5 font-semibold text-rose-700 underline-offset-4 hover:underline">
+                            <a href={`tel:${c.phone.replace(/[^\d+]/g, "")}`} className="inline-flex items-center gap-1.5 font-semibold text-lagoon-700 underline-offset-4 hover:underline">
                               <Phone className="h-4 w-4" aria-hidden="true" /> {c.phone}
                             </a>
                           )}
                           {c.website && (
-                            <a href={c.website} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 font-semibold text-rose-700 underline-offset-4 hover:underline">
+                            <a href={c.website} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 font-semibold text-lagoon-700 underline-offset-4 hover:underline">
                               <ExternalLink className="h-4 w-4" aria-hidden="true" /> Website<span className="sr-only"> (opens in a new tab)</span>
                             </a>
                           )}

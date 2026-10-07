@@ -47,7 +47,7 @@ src/
   app/(site)/       public pages + public server actions (actions.ts)
   app/admin/        (auth) sign-in/reset pages, (dashboard) staff area + actions.ts
   app/api/          auth handler, file downloads, CSV export, upload
-  server/           service layer — every protected function calls assertCan(actor, permission)
+  server/           service layer: every protected function calls assertCan(actor, permission)
   lib/              validation, permissions matrix, content copy, env, email, security helpers
   components/       site, forms, admin, ui
 prisma/             schema, migrations, development-only seed

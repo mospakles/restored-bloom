@@ -136,7 +136,7 @@ export default async function EnquiriesPage({ searchParams }: { searchParams: SP
                 <Td>
                   <StatusBadge status={e.status} label={ENQUIRY_STATUS_LABELS[e.status]} />
                 </Td>
-                <Td>{e.assignedTo?.name ?? <span className="text-plum-500">—</span>}</Td>
+                <Td>{e.assignedTo?.name ?? <span className="text-plum-500">Unassigned</span>}</Td>
                 <Td className="whitespace-nowrap">{formatDateTime(e.createdAt)}</Td>
               </tr>
             ))}

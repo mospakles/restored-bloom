@@ -16,7 +16,7 @@ export default async function UsersPage() {
   const users = await listUsers(actor)
   return (
     <>
-      <AdminHeader title="Users" description="Staff accounts. There is no public registration — accounts are created here." />
+      <AdminHeader title="Users" description="Staff accounts. There is no public registration, so accounts are created here." />
       <Table caption="Staff users">
         <thead>
           <tr>

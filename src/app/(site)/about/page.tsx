@@ -20,10 +20,10 @@ export default async function AboutPage() {
   const settings = await getSettings()
   return (
     <>
-      <PageHero eyebrow="About Restored Bloom" title="Every child deserves to grow up safe, informed and heard">
+      <PageHero accent="dusk" art="roots" eyebrow="About Restored Bloom" title="Every child deserves to grow up safe, informed and heard">
         <p>
           Restored Bloom is a foundation based in {SITE.city}, focused on sexual abuse awareness, prevention
-          education and survivor support — ready to help wherever it&apos;s needed.
+          education and survivor support, and ready to help wherever it&apos;s needed.
         </p>
       </PageHero>
 
@@ -32,7 +32,7 @@ export default async function AboutPage() {
           <SectionHeading eyebrow="Our story" title="Why Restored Bloom exists" />
           <div className="space-y-5 text-lg leading-relaxed text-plum-800">
             <p>
-              Sexual abuse is too often surrounded by silence — silence that leaves children without the words to
+              Sexual abuse is too often surrounded by silence: silence that leaves children without the words to
               describe what is happening to them, adults without the confidence to respond, and survivors without the
               support and dignity they deserve.
             </p>
@@ -52,7 +52,7 @@ export default async function AboutPage() {
       <section className="border-y border-cream-300 bg-cream-100/60 py-16 sm:py-20">
         <Container className="grid gap-6 md:grid-cols-2">
           <div className="rounded-[2rem] bg-white p-8 sm:p-10">
-            <p className="text-xs font-bold uppercase tracking-[0.18em] text-rose-700">Mission</p>
+            <p className="text-xs font-bold uppercase tracking-[0.18em] text-lagoon-700">Mission</p>
             <p className="mt-4 font-display text-2xl leading-snug text-plum-900">
               To equip children, young people and the adults around them with age-appropriate knowledge that helps
               prevent sexual abuse, and to promote healing, dignity and hope for survivors.
@@ -73,7 +73,7 @@ export default async function AboutPage() {
           <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
             {VALUES.map((v) => (
               <li key={v.title} className="rounded-3xl card-soft p-6">
-                <BloomMark className="h-7 w-7 text-rose-400" />
+                <BloomMark className="h-7 w-7 text-gold-400" />
                 <h3 className="mt-4 text-xl text-plum-900">{v.title}</h3>
                 <p className="mt-2 leading-relaxed text-plum-700">{v.body}</p>
               </li>
@@ -107,7 +107,7 @@ export default async function AboutPage() {
             </Link>
           </div>
           <div className="rounded-[2rem] card-soft p-8">
-            <Handshake className="h-8 w-8 text-rose-700" aria-hidden="true" />
+            <Handshake className="h-8 w-8 text-lagoon-700" aria-hidden="true" />
             <h2 className="mt-4 text-2xl text-plum-900">Working together</h2>
             <div className="mt-3 space-y-3 leading-relaxed text-plum-800">
               <p>

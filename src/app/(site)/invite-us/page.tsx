@@ -18,7 +18,7 @@ const FORMAT = [
   {
     icon: Sparkles,
     title: "What we offer",
-    body: "Age-appropriate awareness sessions for children and young people, sensitisation for parents and caregivers, briefings for staff and leaders, and community talks — shaped around your audience.",
+    body: "Age-appropriate awareness sessions for children and young people, sensitisation for parents and caregivers, briefings for staff and leaders, and community talks, all shaped around your audience.",
   },
   {
     icon: Users,
@@ -28,7 +28,7 @@ const FORMAT = [
   {
     icon: ClipboardList,
     title: "What we ask of hosts",
-    body: "A named contact person, a suitable space, agreement on the content in advance, and — whenever children take part — responsible adults from your organisation present throughout and parents informed.",
+    body: "A named contact person, a suitable space, agreement on the content in advance. Whenever children take part, we also ask for responsible adults from your organisation to be present throughout and for parents to be informed.",
   },
   {
     icon: ShieldCheck,
@@ -41,7 +41,7 @@ export default async function InviteUsPage() {
   await connection()
   return (
     <>
-      <PageHero eyebrow="Invite us" title="Wherever help is needed, we're ready to come">
+      <PageHero accent="warm" art="path" eyebrow="Invite us" title="Wherever help is needed, we're ready to come">
         <p>
           Restored Bloom brings sexual abuse awareness and prevention education to schools, faith communities, youth
           groups, organisations, workplaces and families. Tell us where you are and who you&apos;d like us to reach.
@@ -54,7 +54,7 @@ export default async function InviteUsPage() {
           <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {WHERE_WE_HELP.map((w) => (
               <li key={w.title} className="flex gap-4 rounded-3xl card-soft p-6">
-                <BloomMark className="h-7 w-7 shrink-0 text-rose-400" />
+                <BloomMark className="h-7 w-7 shrink-0 text-gold-400" />
                 <div>
                   <h3 className="text-xl text-plum-900">{w.title}</h3>
                   <p className="mt-1.5 leading-relaxed text-plum-700">{w.body}</p>
@@ -63,8 +63,8 @@ export default async function InviteUsPage() {
             ))}
           </ul>
           <p className="mt-8 flex items-start gap-2 text-plum-700">
-            <MapPin className="mt-1 h-4 w-4 shrink-0 text-rose-700" aria-hidden="true" />
-            We&apos;re based in Lagos. If you&apos;re further afield, still get in touch — we&apos;ll talk about how we can
+            <MapPin className="mt-1 h-4 w-4 shrink-0 text-lagoon-700" aria-hidden="true" />
+            We&apos;re based in Lagos. If you&apos;re further afield, still get in touch and we&apos;ll talk about how we can
             help, including online sessions.
           </p>
         </Container>
@@ -75,7 +75,7 @@ export default async function InviteUsPage() {
           <div className="grid gap-5 sm:grid-cols-2">
             {FORMAT.map(({ icon: Icon, title, body }) => (
               <div key={title} className="rounded-3xl card-soft p-6 sm:p-8">
-                <Icon className="h-7 w-7 text-rose-700" aria-hidden="true" />
+                <Icon className="h-7 w-7 text-lagoon-700" aria-hidden="true" />
                 <h2 className="mt-4 text-2xl text-plum-900">{title}</h2>
                 <p className="mt-2 leading-relaxed text-plum-800">{body}</p>
               </div>
@@ -99,7 +99,7 @@ export default async function InviteUsPage() {
             <SectionHeading eyebrow="Invitation" title="Invite Restored Bloom">
               <p>
                 Tell us a little about your organisation or group and what you have in mind. Sending this doesn&apos;t
-                commit you to anything — it starts a conversation.
+                commit you to anything. It simply starts a conversation.
               </p>
             </SectionHeading>
             <div className="mt-8 flex items-start gap-3 rounded-2xl bg-sage-50 p-5 text-sage-800">

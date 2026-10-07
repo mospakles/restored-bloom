@@ -4,7 +4,7 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const baseButtonVariants = cva(
-  "inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-[background-color,color,box-shadow,transform] duration-200 disabled:pointer-events-none disabled:opacity-60 cursor-pointer active:translate-y-px",
+  "inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-[background-color,color,box-shadow,transform,border-color] duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-y-0.5 hover:scale-[1.03] active:scale-95 disabled:pointer-events-none disabled:opacity-60 cursor-pointer",
   {
     variants: {
       variant: {
@@ -17,7 +17,7 @@ const baseButtonVariants = cva(
         /** Outline button for dark backgrounds. */
         "outline-light": "border border-plum-300 text-cream-50 bg-transparent hover:bg-plum-800 hover:border-plum-200",
         danger: "bg-rose-800 text-white hover:bg-rose-700",
-        link: "rounded-none p-0 text-rose-700 underline underline-offset-4 hover:text-rose-800",
+        link: "rounded-none p-0 text-lagoon-700 underline underline-offset-4 hover:text-lagoon-800",
       },
       size: {
         sm: "h-9 px-4 text-sm",

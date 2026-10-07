@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils"
 import { useFormCtx } from "@/components/forms/form"
 
 const control =
-  "block w-full rounded-xl border bg-white px-4 py-2.5 text-[0.98rem] text-plum-950 shadow-xs placeholder:text-plum-400 transition-colors focus:outline-none focus-visible:border-plum-500 focus-visible:ring-2 focus-visible:ring-rose-300 disabled:opacity-60"
+  "block w-full rounded-xl border bg-white px-4 py-2.5 text-[0.98rem] text-plum-950 shadow-xs placeholder:text-plum-400 transition-colors focus:outline-none focus-visible:border-plum-500 focus-visible:ring-2 focus-visible:ring-lagoon-200 disabled:opacity-60"
 
 function useField(name: string) {
   const { errors, values, idPrefix } = useFormCtx()

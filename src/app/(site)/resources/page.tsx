@@ -47,7 +47,7 @@ export default async function ResourcesPage({ searchParams }: { searchParams: Se
 
   return (
     <>
-      <PageHero eyebrow="Resource hub" title="Resources for safer childhoods">
+      <PageHero accent="lagoon" art="book" eyebrow="Resource hub" title="Resources for safer childhoods">
         <p>
           Articles and downloadable materials for children, teenagers, parents, educators and survivors. Every
           resource is reviewed for accuracy and age-appropriateness before it&apos;s published.
@@ -69,7 +69,7 @@ export default async function ResourcesPage({ searchParams }: { searchParams: Se
               defaultValue={q}
               maxLength={100}
               placeholder="Search resources"
-              className="h-12 w-full rounded-full border border-cream-400 bg-white pl-12 pr-4 text-plum-950 placeholder:text-plum-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-300"
+              className="h-12 w-full rounded-full border border-cream-400 bg-white pl-12 pr-4 text-plum-950 placeholder:text-plum-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-lagoon-200"
             />
           </div>
           <Button type="submit" size="lg" className="h-12">
@@ -99,7 +99,7 @@ export default async function ResourcesPage({ searchParams }: { searchParams: Se
               {filtered ? (
                 <>
                   Try a different search, or{" "}
-                  <Link href="/resources" className="font-semibold text-rose-700 underline underline-offset-4">
+                  <Link href="/resources" className="font-semibold text-lagoon-700 underline underline-offset-4">
                     view all resources
                   </Link>
                   .

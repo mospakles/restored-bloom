@@ -2,7 +2,8 @@ import Link from "next/link"
 import { ArrowLeft, CalendarDays, Clock, MapPin, Monitor, Users } from "lucide-react"
 import { Badge, Container, Notice } from "@/components/ui/misc"
 import { Markdown } from "@/components/site/markdown"
-import { formatDate, formatTime } from "@/lib/utils"
+import { cn, formatDate, formatTime } from "@/lib/utils"
+import { HeroBackdrop, HeroCurve } from "@/components/site/blocks"
 import type { Availability } from "@/server/events"
 
 type EventLike = {
@@ -30,20 +31,20 @@ export function EventMeta({ event }: { event: Pick<EventLike, "startsAt" | "ends
   return (
     <ul className="space-y-2 text-plum-800">
       <li className="flex items-center gap-2">
-        <CalendarDays className="h-4 w-4 text-rose-700" aria-hidden="true" />
+        <CalendarDays className="h-4 w-4 text-lagoon-700" aria-hidden="true" />
         <time dateTime={event.startsAt.toISOString()}>{formatDate(event.startsAt)}</time>
         {event.endsAt && !sameDay && <> – {formatDate(event.endsAt)}</>}
       </li>
       <li className="flex items-center gap-2">
-        <Clock className="h-4 w-4 text-rose-700" aria-hidden="true" />
+        <Clock className="h-4 w-4 text-lagoon-700" aria-hidden="true" />
         {formatTime(event.startsAt)}
         {event.endsAt && sameDay && <> – {formatTime(event.endsAt)}</>} (Lagos time)
       </li>
       <li className="flex items-center gap-2">
         {event.isOnline ? (
-          <Monitor className="h-4 w-4 text-rose-700" aria-hidden="true" />
+          <Monitor className="h-4 w-4 text-lagoon-700" aria-hidden="true" />
         ) : (
-          <MapPin className="h-4 w-4 text-rose-700" aria-hidden="true" />
+          <MapPin className="h-4 w-4 text-lagoon-700" aria-hidden="true" />
         )}
         {event.location}
       </li>
@@ -56,18 +57,21 @@ export function EventDetail({
   availability,
   registration,
   banner,
+  underHeader = true,
 }: {
   event: EventLike
   availability: Availability
   registration?: React.ReactNode
   banner?: React.ReactNode
+  underHeader?: boolean
 }) {
   return (
     <article>
-      <header className="border-b border-cream-300 bg-gradient-to-b from-cream-100 to-cream-50">
-        <Container className="py-12 sm:py-16">
+      <header className={cn("relative isolate overflow-hidden bg-plum-950 text-cream-50", underHeader && "-mt-18")}>
+        <HeroBackdrop accent="dusk" />
+        <Container className={cn("stagger pb-24 sm:pb-28", underHeader ? "pt-32 sm:pt-36" : "pt-12")}>
           {banner}
-          <Link href="/events" className="inline-flex items-center gap-1 text-sm font-semibold text-rose-700 hover:underline">
+          <Link href="/events" className="inline-flex items-center gap-1 text-sm font-semibold text-gold-200 hover:text-white hover:underline">
             <ArrowLeft className="h-4 w-4" aria-hidden="true" /> All events
           </Link>
           {event.status === "CANCELLED" && (
@@ -75,9 +79,10 @@ export function EventDetail({
               <Badge tone="rose">Cancelled</Badge>
             </p>
           )}
-          <h1 className="mt-4 max-w-3xl text-4xl text-plum-900 sm:text-5xl">{event.title}</h1>
-          <p className="mt-4 max-w-2xl text-xl leading-relaxed text-plum-700">{event.summary}</p>
+          <h1 className="mt-4 max-w-3xl text-4xl text-cream-50 sm:text-5xl lg:text-6xl">{event.title}</h1>
+          <p className="mt-5 max-w-2xl text-xl leading-relaxed text-cream-100/80">{event.summary}</p>
         </Container>
+        <HeroCurve />
       </header>
       <Container className="grid gap-10 py-12 lg:grid-cols-[1.5fr_1fr]">
         <div>
@@ -88,7 +93,7 @@ export function EventDetail({
             <EventMeta event={event} />
             {event.audience && (
               <p className="mt-3 flex items-center gap-2 text-plum-800">
-                <Users className="h-4 w-4 text-rose-700" aria-hidden="true" /> {event.audience}
+                <Users className="h-4 w-4 text-lagoon-700" aria-hidden="true" /> {event.audience}
               </p>
             )}
           </div>

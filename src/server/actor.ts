@@ -26,7 +26,7 @@ export function assertCan(actor: Actor | null | undefined, permission: Permissio
 
 /**
  * Records an administrative action. `metadata` must never contain submission
- * contents — only identifiers, statuses and changed field names.
+ * contents, only identifiers, statuses and changed field names.
  */
 export async function audit(
   actor: Actor | null,

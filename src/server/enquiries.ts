@@ -272,7 +272,7 @@ export async function assignableStaff() {
   return users.filter((u) => can(u.role, "enquiries:read"))
 }
 
-/** Rows for CSV export. Notes are excluded — they are internal working notes. */
+/** Rows for CSV export. Notes are excluded, they are internal working notes. */
 export async function exportEnquiries(actor: Actor, filters: EnquiryFilters) {
   assertCan(actor, "enquiries:export")
   const where = buildWhere(actor, { ...filters, status: filters.status ?? "all" })

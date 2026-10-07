@@ -128,7 +128,7 @@ export function ActionForm({
 export function SubmitButton({ children, pendingLabel = "Sending…", ...props }: ButtonProps & { pendingLabel?: string }) {
   const { pending } = useFormStatus()
   return (
-    <Button type="submit" disabled={pending} aria-disabled={pending} {...props}>
+    <Button type="submit" disabled={pending} aria-disabled={pending} data-burst {...props}>
       {pending && <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />}
       {pending ? pendingLabel : children}
     </Button>

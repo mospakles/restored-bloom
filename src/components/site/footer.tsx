@@ -19,7 +19,7 @@ export function SiteFooter({ settings }: { settings: SiteSettings }) {
     <footer className="relative mt-24 overflow-hidden border-t border-cream-300 bg-gradient-to-b from-cream-100 to-[#f3eadc]">
       <svg
         viewBox="0 0 100 100"
-        className="pointer-events-none absolute -bottom-28 -right-20 h-[26rem] w-[26rem] text-rose-200/45 motion-safe:animate-[sway_18s_ease-in-out_infinite]"
+        className="pointer-events-none absolute -bottom-28 -right-20 h-[26rem] w-[26rem] text-gold-200/50 motion-safe:animate-[sway_18s_ease-in-out_infinite]"
         aria-hidden="true"
         focusable="false"
       >
@@ -46,12 +46,12 @@ export function SiteFooter({ settings }: { settings: SiteSettings }) {
           <p className="mt-4 max-w-sm leading-relaxed text-plum-700">{SITE.tagline}</p>
           <ul className="mt-6 space-y-2 text-sm text-plum-800">
             <li className="flex items-center gap-2">
-              <MapPin className="h-4 w-4 text-rose-700" aria-hidden="true" />
+              <MapPin className="h-4 w-4 text-lagoon-700" aria-hidden="true" />
               {settings.location || SITE.city}
             </li>
             {settings.contactEmail && (
               <li className="flex items-center gap-2">
-                <Mail className="h-4 w-4 text-rose-700" aria-hidden="true" />
+                <Mail className="h-4 w-4 text-lagoon-700" aria-hidden="true" />
                 <a href={`mailto:${settings.contactEmail}`} className="underline-offset-4 hover:underline">
                   {settings.contactEmail}
                 </a>
@@ -59,7 +59,7 @@ export function SiteFooter({ settings }: { settings: SiteSettings }) {
             )}
             {settings.contactPhone && (
               <li className="flex items-center gap-2">
-                <Phone className="h-4 w-4 text-rose-700" aria-hidden="true" />
+                <Phone className="h-4 w-4 text-lagoon-700" aria-hidden="true" />
                 <a href={`tel:${settings.contactPhone.replace(/[^\d+]/g, "")}`} className="underline-offset-4 hover:underline">
                   {settings.contactPhone}
                 </a>

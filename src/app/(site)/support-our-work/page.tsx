@@ -20,7 +20,7 @@ const AREAS = [
   {
     icon: MapPin,
     title: "Outreach sessions",
-    body: "Covering facilitator transport, materials and preparation so that schools, faith communities and community groups can host sessions — wherever the need is.",
+    body: "Covering facilitator transport, materials and preparation so that schools, faith communities and community groups can host sessions, wherever the need is.",
   },
   {
     icon: Presentation,
@@ -38,9 +38,9 @@ export default async function SupportOurWorkPage() {
   await connection()
   return (
     <>
-      <PageHero eyebrow="Support our work" title="Help us reach more children, families and communities">
+      <PageHero accent="warm" art="watering" eyebrow="Support our work" title="Help us reach more children, families and communities">
         <p>
-          Sponsorship helps turn plans into sessions in classrooms, churches, mosques and communities — wherever help is needed. If you or your organisation would like to support
+          Sponsorship helps turn plans into sessions in classrooms, churches, mosques and communities, wherever help is needed. If you or your organisation would like to support
           Restored Bloom, we&apos;d be glad to talk.
         </p>
       </PageHero>
@@ -53,7 +53,7 @@ export default async function SupportOurWorkPage() {
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {AREAS.map(({ icon: Icon, title, body }) => (
               <div key={title} className="rounded-3xl card-soft p-6">
-                <Icon className="h-7 w-7 text-rose-700" aria-hidden="true" />
+                <Icon className="h-7 w-7 text-lagoon-700" aria-hidden="true" />
                 <h3 className="mt-4 text-xl text-plum-900">{title}</h3>
                 <p className="mt-2 leading-relaxed text-plum-700">{body}</p>
               </div>

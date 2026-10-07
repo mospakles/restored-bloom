@@ -19,9 +19,10 @@ export default async function PreviewResourcePage({ params }: { params: Promise<
   return (
     <div className="-mx-4 -my-8 sm:-mx-8 lg:-mx-10">
       <ResourceArticle
+        underHeader={false}
         resource={{ ...r, publishedAt: r.publishedAt ?? null }}
         banner={
-          <Notice tone="pending" title={`Preview — status: ${r.status.toLowerCase()}`} className="mb-6">
+          <Notice tone="pending" title={`Preview (status: ${r.status.toLowerCase()})`} className="mb-6">
             This is how the resource will look to visitors.{" "}
             <Link href={`/admin/resources/${r.id}`} className="font-semibold underline">
               Back to editing

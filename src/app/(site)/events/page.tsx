@@ -39,7 +39,7 @@ export default async function EventsPage() {
   const [upcoming, past] = await Promise.all([listUpcomingEvents(), listPastEvents()])
   return (
     <>
-      <PageHero eyebrow="Events" title="Workshops, sessions and community events">
+      <PageHero accent="dusk" art="sunrise" eyebrow="Events" title="Workshops, sessions and community events">
         <p>Join us for awareness sessions for parents, educators and communities.</p>
       </PageHero>
       <Container className="py-12">
@@ -52,7 +52,7 @@ export default async function EventsPage() {
               <p className="text-xl text-plum-900">No events are scheduled right now.</p>
               <p className="mx-auto mt-2 max-w-md text-plum-700">
                 New events will be announced here. If you&apos;d like us to run a session for your school, community or organisation,{" "}
-                <Link href="/contact" className="font-semibold text-rose-700 underline underline-offset-4">
+                <Link href="/contact" className="font-semibold text-lagoon-700 underline underline-offset-4">
                   get in touch
                 </Link>
                 .

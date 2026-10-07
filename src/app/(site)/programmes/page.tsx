@@ -20,10 +20,10 @@ export default async function ProgrammesPage() {
 
   return (
     <>
-      <PageHero eyebrow="Our programmes" title="Gentle, age-appropriate awareness for every stage">
+      <PageHero accent="sage" art="growth" eyebrow="Our programmes" title="Gentle, age-appropriate awareness for every stage">
         <p>
           Our programmes help children and young people understand personal boundaries, recognise unsafe situations
-          and seek help from trusted adults — and equip parents and educators to protect them.
+          and seek help from trusted adults. They also equip parents and educators to protect them.
         </p>
       </PageHero>
 
@@ -34,7 +34,7 @@ export default async function ProgrammesPage() {
             .map((l) => `"${l}"`)
             .join(", ")
             .replace(/, ([^,]*)$/, " or $1")}{" "}
-          so you can see exactly what is currently available. Preventing abuse is always the responsibility of adults —
+          so you can see exactly what is currently available. Preventing abuse is always the responsibility of adults, so
           our sessions for children focus on understanding and help-seeking, never on making children responsible for
           their own protection.
         </Notice>
@@ -65,7 +65,7 @@ export default async function ProgrammesPage() {
                 </h2>
                 <ProgrammeStatusBadge status={programmeStatus[p.id] ?? "planned"} />
               </div>
-              <p className="mt-2 text-sm font-semibold text-rose-700">{p.audience}</p>
+              <p className="mt-2 text-sm font-semibold text-lagoon-700">{p.audience}</p>
               <div className="mt-6 grid gap-8 lg:grid-cols-[1.2fr_1fr]">
                 <div>
                   <p className="text-lg leading-relaxed text-plum-800">{p.summary}</p>

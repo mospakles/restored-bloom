@@ -52,7 +52,7 @@ You can ask to see, correct or delete the personal information we hold about you
 
 If website analytics are enabled, they are only loaded after you agree, never run on staff pages, and never record what you type into forms.
 
-_Last updated: draft — awaiting review._`,
+_Last updated: draft, awaiting review._`,
   },
   safeguarding: {
     title: "Safeguarding statement",
@@ -62,7 +62,7 @@ _Last updated: draft — awaiting review._`,
 ## Our commitments
 
 - The welfare of children and young people is paramount in everything we do.
-- **Keeping children safe is the responsibility of adults.** Our sessions help children recognise unsafe situations and seek help — they never place responsibility on children to prevent abuse.
+- **Keeping children safe is the responsibility of adults.** Our sessions help children recognise unsafe situations and seek help, they never place responsibility on children to prevent abuse.
 - All materials are age-appropriate and non-graphic.
 - Whenever children take part, responsible adults from the hosting school, faith community or organisation are present throughout, and the host's own safeguarding arrangements apply.
 - Anyone delivering sessions with children must be screened and approved by Restored Bloom first. Submitting a volunteer enquiry does not give anyone permission to work with children.
@@ -80,7 +80,7 @@ This website is not an emergency service and is not a channel for reporting abus
 
 If you have a concern about the conduct of anyone representing Restored Bloom, please contact the founder directly using the details on our [contact page](/contact).
 
-_Last updated: draft — awaiting professional review._`,
+_Last updated: draft, awaiting professional review._`,
   },
   terms: {
     title: "Website terms of use",
@@ -111,7 +111,7 @@ Unless stated otherwise, content on this site belongs to Restored Bloom. You may
 
 We may update these terms. The current version will always be on this page.
 
-_Last updated: draft — awaiting review._`,
+_Last updated: draft, awaiting review._`,
   },
   accessibility: {
     title: "Accessibility statement",
@@ -134,7 +134,7 @@ This statement is a **draft**. A full accessibility review, including testing wi
 
 If you find something difficult to use, please tell us through the [contact page](/contact) (choose "Website feedback or accessibility"). We will try to provide the information in another format.
 
-_Last updated: draft — awaiting review._`,
+_Last updated: draft, awaiting review._`,
   },
   support: {
     title: "Finding support",
@@ -145,11 +145,11 @@ Contact local emergency services or go to the nearest hospital straight away. Re
 
 ## If you are a child or young person
 
-What happened is **not your fault**. You deserve to be safe. Tell a trusted adult — a parent, relative, teacher, school counsellor or faith leader. If the first person doesn't help, keep telling until someone does.
+What happened is **not your fault**. You deserve to be safe. Tell a trusted adult, a parent, relative, teacher, school counsellor or faith leader. If the first person doesn't help, keep telling until someone does.
 
 ## If you are a survivor
 
-Whatever happened, and however long ago, you deserve support, dignity and care. You get to decide when and how you seek help. Qualified professionals — such as counsellors, doctors and specialist support organisations — can help you think through your options.
+Whatever happened, and however long ago, you deserve support, dignity and care. You get to decide when and how you seek help. Qualified professionals such as counsellors, doctors and specialist support organisations can help you think through your options.
 
 ## If a child tells you something worrying
 

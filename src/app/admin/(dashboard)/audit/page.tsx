@@ -14,7 +14,7 @@ export default async function AuditPage({ searchParams }: { searchParams: Promis
     <>
       <AdminHeader
         title="Audit log"
-        description="Important administrative actions. Records contain identifiers and changed fields only — never submission contents."
+        description="Important administrative actions. Records contain identifiers and changed fields only, never submission contents."
       />
       {items.length === 0 ? (
         <EmptyState title="No activity recorded yet" />

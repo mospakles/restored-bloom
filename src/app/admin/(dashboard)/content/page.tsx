@@ -46,7 +46,7 @@ export default async function ContentPage() {
       </Table>
       <p className="mt-6 text-sm text-plum-600">
         Contact details, founder biography and programme status are edited in Site settings. Other marketing copy lives
-        in the code (src/lib/content.ts) — see the README.
+        in the code (src/lib/content.ts). See the README.
       </p>
     </>
   )

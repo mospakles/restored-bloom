@@ -301,7 +301,7 @@ export function SettingsForm({
           name="registrationNotice"
           label="Registration notice (footer)"
           defaultValue={settings.registrationNotice}
-          hint="e.g. a CAC registration number — only once verified. Leave blank otherwise."
+          hint="e.g. a CAC registration number, only once verified. Leave blank otherwise."
         />
       </fieldset>
 

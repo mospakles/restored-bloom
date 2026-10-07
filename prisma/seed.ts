@@ -116,7 +116,7 @@ async function main() {
         category: "PARENTS",
         status: "PUBLISHED",
         publishedAt: new Date(),
-        reviewNote: "Development data — not reviewed",
+        reviewNote: "Development data, not reviewed",
       },
     })
     await prisma.resource.create({

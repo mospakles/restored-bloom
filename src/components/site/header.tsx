@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState, useSyncExternalStore } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Menu, X } from "lucide-react"
@@ -9,16 +9,32 @@ import { cn } from "@/lib/utils"
 import { BloomMark } from "@/components/site/botanical"
 import { buttonVariants } from "@/components/ui/button"
 
-export function Logo({ className }: { className?: string }) {
+export function Logo({ className, tone = "dark" }: { className?: string; tone?: "dark" | "light" }) {
   return (
     <span className={cn("inline-flex items-center gap-2", className)}>
-      <BloomMark className="h-8 w-8 text-rose-500" />
-      <span className="font-display text-[1.35rem] leading-none tracking-tight text-plum-900">
-        Restored <span className="italic text-rose-700">Bloom</span>
+      <BloomMark
+        className={cn(
+          "h-8 w-8 transition-[color,transform] duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:rotate-[144deg] group-hover:scale-110",
+          tone === "light" ? "text-gold-300" : "text-gold-400",
+        )}
+      />
+      <span
+        className={cn(
+          "font-display text-[1.35rem] leading-none tracking-tight transition-colors",
+          tone === "light" ? "text-cream-50" : "text-plum-900",
+        )}
+      >
+        Restored <span className={cn("italic", tone === "light" ? "text-gold-200" : "text-gold-600")}>Bloom</span>
       </span>
     </span>
   )
 }
+
+function subscribeScroll(cb: () => void) {
+  window.addEventListener("scroll", cb, { passive: true })
+  return () => window.removeEventListener("scroll", cb)
+}
+const isScrolled = () => window.scrollY > 24
 
 export function SiteHeader() {
   const pathname = usePathname()
@@ -44,12 +60,22 @@ export function SiteHeader() {
   }, [open])
 
   const isActive = (href: string) => pathname === href || pathname.startsWith(`${href}/`)
+  const scrolled = useSyncExternalStore(subscribeScroll, isScrolled, () => false)
+  // Every public page opens with a dark hero; the header is transparent over it until the page scrolls.
+  const onDark = !scrolled && !open
 
   return (
-    <header className="sticky top-0 z-40 border-b border-cream-300/80 bg-cream-50/90 backdrop-blur supports-[backdrop-filter]:bg-cream-50/80">
+    <header
+      className={cn(
+        "sticky top-0 z-40 border-b transition-[background-color,border-color] duration-300",
+        onDark
+          ? "border-transparent bg-transparent"
+          : "border-cream-300/80 bg-cream-50/90 backdrop-blur supports-[backdrop-filter]:bg-cream-50/80",
+      )}
+    >
       <div className="mx-auto flex h-18 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
-        <Link href="/" aria-label={`${SITE.name} — home`} className="shrink-0 rounded-lg">
-          <Logo />
+        <Link href="/" aria-label={`${SITE.name} home`} className="group shrink-0 rounded-lg">
+          <Logo tone={onDark ? "light" : "dark"} />
         </Link>
 
         <nav aria-label="Main" className="hidden lg:block">
@@ -60,8 +86,12 @@ export function SiteHeader() {
                   href={item.href}
                   aria-current={isActive(item.href) ? "page" : undefined}
                   className={cn(
-                    "rounded-full px-3.5 py-2 text-[0.95rem] font-medium transition-colors hover:bg-plum-50 hover:text-plum-900",
-                    isActive(item.href) ? "bg-plum-50 text-plum-900" : "text-plum-700",
+                    "rounded-full px-3.5 py-2 text-[0.95rem] font-medium transition-colors",
+                    onDark
+                      ? "text-cream-100/85 hover:bg-white/10 hover:text-white"
+                      : isActive(item.href)
+                        ? "bg-plum-50 text-plum-900"
+                        : "text-plum-700 hover:bg-plum-50 hover:text-plum-900",
                   )}
                 >
                   {item.label}
@@ -72,7 +102,7 @@ export function SiteHeader() {
         </nav>
 
         <div className="hidden items-center gap-2 lg:flex">
-          <Link href="/invite-us#enquire" className={buttonVariants({ size: "sm" })}>
+          <Link href="/invite-us#enquire" data-burst className={buttonVariants({ size: "sm", variant: onDark ? "light" : "primary" })}>
             Invite us
           </Link>
         </div>
@@ -80,7 +110,10 @@ export function SiteHeader() {
         <button
           ref={toggleRef}
           type="button"
-          className="inline-flex h-11 w-11 items-center justify-center rounded-full text-plum-800 hover:bg-plum-50 lg:hidden"
+          className={cn(
+            "inline-flex h-11 w-11 items-center justify-center rounded-full lg:hidden",
+            onDark ? "text-cream-50 hover:bg-white/10" : "text-plum-800 hover:bg-plum-50",
+          )}
           aria-expanded={open}
           aria-controls="mobile-nav"
           onClick={() => setOpen((o) => !o)}

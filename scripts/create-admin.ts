@@ -1,6 +1,6 @@
 /**
  * Creates a staff account from the command line. Use this to create the first
- * administrator — there is no public registration.
+ * administrator. There is no public registration.
  *
  *   npm run admin:create
  *

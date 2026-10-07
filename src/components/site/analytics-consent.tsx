@@ -28,7 +28,7 @@ function readConsent(): "granted" | "denied" | null {
 /**
  * Privacy-friendly analytics (Plausible), loaded only after explicit consent.
  * Rendered only in the public site layout, so staff pages are never tracked.
- * Plausible records page views only — never form contents.
+ * Plausible records page views only, never form contents.
  */
 export function AnalyticsConsent({ domain, src }: { domain: string; src: string }) {
   // "unknown" during server render; the stored choice after hydration.

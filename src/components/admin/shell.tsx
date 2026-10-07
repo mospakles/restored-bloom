@@ -93,7 +93,7 @@ export function AdminShell({
       </a>
       <header className="sticky top-0 z-30 flex h-16 items-center justify-between border-b border-cream-300 bg-cream-100 px-4 lg:hidden">
         <Link href="/admin" className="flex items-center gap-2 font-display text-lg text-plum-900">
-          <BloomMark className="h-7 w-7 text-rose-500" /> Dashboard
+          <BloomMark className="h-7 w-7 text-gold-400" /> Dashboard
         </Link>
         <button
           type="button"
@@ -115,7 +115,7 @@ export function AdminShell({
         )}
       >
         <div className="hidden h-18 items-center gap-2 px-5 lg:flex">
-          <BloomMark className="h-8 w-8 text-rose-500" />
+          <BloomMark className="h-8 w-8 text-gold-400" />
           <span className="font-display text-xl text-plum-900">Restored Bloom</span>
         </div>
         <nav aria-label="Dashboard" className="flex-1 overflow-y-auto px-3 py-4">

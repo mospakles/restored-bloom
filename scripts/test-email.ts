@@ -21,7 +21,7 @@ async function main() {
   console.log(`Sending a test email via ${env.smtp.host}:${env.smtp.port} to ${to}…`)
   const result = await sendEmail({
     to,
-    subject: "Restored Bloom — test email",
+    subject: "Restored Bloom - test email",
     text: emailBody(["This is a test email from the Restored Bloom website. Email delivery is working."]),
   })
   if (!result.sent) throw new Error("Sending failed. Check the SMTP settings and App Password, then try again.")

@@ -93,7 +93,7 @@ export default async function EditEventPage({
               )}
             </div>
             <p className="mt-3 text-xs text-plum-600">
-              Cancelling does not email attendees — contact them from the registrations list.
+              Cancelling does not email attendees. Contact them from the registrations list.
             </p>
           </Panel>
           <Panel title="Delete">

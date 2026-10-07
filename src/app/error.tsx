@@ -8,7 +8,7 @@ export default function ErrorPage({ reset }: { error: Error & { digest?: string 
     <main id="main" className="mx-auto flex min-h-[70dvh] max-w-xl flex-col items-center justify-center px-4 py-16 text-center">
       <h1 className="text-4xl text-plum-900">Something went wrong</h1>
       <p className="mt-4 text-lg leading-relaxed text-plum-700">
-        Sorry — this page couldn&apos;t be loaded. Please try again. If you were submitting a form, your information
+        Sorry, this page couldn&apos;t be loaded. Please try again. If you were submitting a form, your information
         may not have been sent.
       </p>
       <div className="mt-8 flex flex-wrap justify-center gap-3">
