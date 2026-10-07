@@ -1,138 +1,183 @@
 @import "tailwindcss";
 
 @theme {
-  /* --- Typography --- */
-  --font-serif: "DM Serif Display", "Playfair Display", Georgia, serif;
-  --font-display: "Playfair Display", Georgia, serif;
-  --font-body: "Inter", system-ui, -apple-system, sans-serif;
+  --font-display: var(--font-fraunces), "Iowan Old Style", Georgia, serif;
+  --font-sans: var(--font-figtree), ui-sans-serif, system-ui, sans-serif;
 
-  /* --- Cream — warmth, safety, home --- */
-  --color-cream-50: #FDFAF6;
-  --color-cream-100: #F6F0E6;
-  --color-cream-200: #EDE3D2;
-  --color-cream-300: #DDD0BA;
-  --color-cream-400: #C8B99E;
-  --color-cream-500: #B3A385;
+  /* Cream — page and surface backgrounds */
+  --color-cream-50: #fdfaf5;
+  --color-cream-100: #f8f1e6;
+  --color-cream-200: #f0e5d4;
+  --color-cream-300: #e3d4bc;
+  --color-cream-400: #cdb994;
 
-  /* --- Navy — authority, trust, depth --- */
-  --color-navy-50: #EEF2FF;
-  --color-navy-100: #DBE5F5;
-  --color-navy-200: #B4CAE8;
-  --color-navy-300: #7EA3D1;
-  --color-navy-400: #4A79B5;
-  --color-navy-500: #2C5498;
-  --color-navy-600: #1E3C6E;
-  --color-navy-700: #162D54;
-  --color-navy-800: #101F3C;
-  --color-navy-900: #0A1528;
+  /* Plum — primary text and brand */
+  --color-plum-50: #f8f1f6;
+  --color-plum-100: #efe1eb;
+  --color-plum-200: #dcc2d6;
+  --color-plum-300: #c09bb8;
+  --color-plum-400: #9a6e92;
+  --color-plum-500: #7c5175;
+  --color-plum-600: #66405f;
+  --color-plum-700: #52304c;
+  --color-plum-800: #42253d;
+  --color-plum-900: #341b31;
+  --color-plum-950: #220f20;
 
-  /* --- Sage — healing, nature, calm --- */
-  --color-sage-50: #EEF4EC;
-  --color-sage-100: #D8E8D4;
-  --color-sage-200: #B4CCB0;
-  --color-sage-300: #8FAE8A;
-  --color-sage-400: #6F9469;
-  --color-sage-500: #5A7D55;
-  --color-sage-600: #476641;
-  --color-sage-700: #375031;
-  --color-sage-800: #273A22;
-  --color-sage-900: #182516;
+  /* Muted rose — warmth and emphasis (700+ for text on cream) */
+  --color-rose-50: #fbf1f0;
+  --color-rose-100: #f6e1e0;
+  --color-rose-200: #ecc6c7;
+  --color-rose-300: #dea3a8;
+  --color-rose-400: #ca8089;
+  --color-rose-500: #b4646f;
+  --color-rose-600: #9b4f5b;
+  --color-rose-700: #823f4b;
+  --color-rose-800: #6a333d;
 
-  /* --- Blush — warmth, tenderness, femininity --- */
-  --color-blush-50: #FBF2F0;
-  --color-blush-100: #F4DDD8;
-  --color-blush-200: #E8BAB3;
-  --color-blush-300: #D8978E;
-  --color-blush-400: #C9796E;
-  --color-blush-500: #B86356;
-  --color-blush-600: #9A4F44;
-  --color-blush-700: #7D3C33;
+  /* Sage — restrained accents */
+  --color-sage-50: #f2f5ee;
+  --color-sage-100: #e3eadb;
+  --color-sage-200: #cad6bc;
+  --color-sage-300: #aebd9c;
+  --color-sage-400: #8fa07c;
+  --color-sage-500: #738563;
+  --color-sage-600: #5b6c4e;
+  --color-sage-700: #485640;
+  --color-sage-800: #3a4534;
 
-  /* --- Gold — hope, dignity, faith --- */
-  --color-gold-50: #FDF8ED;
-  --color-gold-100: #F6EDD2;
-  --color-gold-200: #EDD8A3;
-  --color-gold-300: #E1C170;
-  --color-gold-400: #D4AB48;
-  --color-gold-500: #C29530;
-  --color-gold-600: #A07822;
-  --color-gold-700: #7F5E18;
+  --animate-bloom-in: bloom-in 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  --animate-sway: sway 9s ease-in-out infinite;
 
-  /* --- Teal (refined, kept for trust) --- */
-  --color-teal-50: #EBF5F5;
-  --color-teal-100: #C9E8E8;
-  --color-teal-200: #9DD3D3;
-  --color-teal-300: #6BBDBD;
-  --color-teal-400: #3EA8A8;
-  --color-teal-500: #259292;
-  --color-teal-600: #1C7878;
-  --color-teal-700: #165E5E;
-  --color-teal-800: #0F4444;
-  --color-teal-900: #092B2B;
+  @keyframes bloom-in {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes sway {
+    0%,
+    100% {
+      transform: rotate(-2deg);
+    }
+    50% {
+      transform: rotate(2deg);
+    }
+  }
 }
 
 @layer base {
-  *, *::before, *::after {
-    box-sizing: border-box;
-  }
-
   html {
     scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
   }
 
   body {
-    font-family: var(--font-body);
+    font-family: var(--font-sans);
     background-color: var(--color-cream-50);
-    color: #2C3040;
+    color: var(--color-plum-900);
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    font-feature-settings: "kern" 1, "liga" 1;
+    text-rendering: optimizeLegibility;
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-serif);
-    line-height: 1.2;
-    font-weight: 400;
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
   }
 
-  /* Editorial pull quote */
-  blockquote {
-    font-family: var(--font-serif);
-    font-style: italic;
+  p {
+    text-wrap: pretty;
   }
 
-  /* Smooth focus */
+  ::selection {
+    background: var(--color-rose-200);
+    color: var(--color-plum-950);
+  }
+
   :focus-visible {
-    outline: 2px solid var(--color-teal-600);
+    outline: 3px solid var(--color-rose-600);
     outline-offset: 3px;
-    border-radius: 4px;
+    border-radius: 6px;
   }
 
-  /* Reduced motion */
   @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
+    *,
+    *::before,
+    *::after {
       animation-duration: 0.01ms !important;
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
-    }
-    html {
-      scroll-behavior: auto;
+      scroll-behavior: auto !important;
     }
   }
+}
 
-  @keyframes accordion-down {
-    from { height: 0; }
-    to { height: var(--radix-accordion-content-height); }
+@layer components {
+  /* Long-form reading content rendered from Markdown */
+  .prose-bloom {
+    color: var(--color-plum-900);
+    font-size: 1.0625rem;
+    line-height: 1.75;
   }
-  @keyframes accordion-up {
-    from { height: var(--radix-accordion-content-height); }
-    to { height: 0; }
+  .prose-bloom > * + * {
+    margin-top: 1.1em;
   }
-  .animate-accordion-down { animation: accordion-down 0.2s ease-out; }
-  .animate-accordion-up { animation: accordion-up 0.2s ease-out; }
-
-  /* Thin scrollbar for reading panels */
-  .scrollbar-thin::-webkit-scrollbar { width: 4px; }
-  .scrollbar-thin::-webkit-scrollbar-track { background: transparent; }
-  .scrollbar-thin::-webkit-scrollbar-thumb { background: var(--color-cream-300); border-radius: 2px; }
+  .prose-bloom h2 {
+    font-size: 1.6rem;
+    margin-top: 2em;
+    color: var(--color-plum-900);
+  }
+  .prose-bloom h3 {
+    font-size: 1.25rem;
+    margin-top: 1.6em;
+  }
+  .prose-bloom a {
+    color: var(--color-rose-700);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .prose-bloom ul {
+    list-style: disc;
+    padding-left: 1.4em;
+  }
+  .prose-bloom ol {
+    list-style: decimal;
+    padding-left: 1.4em;
+  }
+  .prose-bloom li + li {
+    margin-top: 0.4em;
+  }
+  .prose-bloom blockquote {
+    border-left: 3px solid var(--color-rose-300);
+    padding-left: 1em;
+    font-style: italic;
+    color: var(--color-plum-700);
+  }
+  .prose-bloom strong {
+    font-weight: 650;
+  }
+  .prose-bloom table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95em;
+  }
+  .prose-bloom th,
+  .prose-bloom td {
+    border: 1px solid var(--color-cream-300);
+    padding: 0.5em 0.75em;
+    text-align: left;
+  }
+  .prose-bloom hr {
+    border-color: var(--color-cream-300);
+  }
 }

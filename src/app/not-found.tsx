@@ -1,27 +1,30 @@
 import Link from "next/link"
-import { Home, Search, Shield, ArrowRight } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { PageContainer } from "@/components/layout/section-wrapper"
+import { buttonVariants } from "@/components/ui/button"
+import { Sprig } from "@/components/site/botanical"
+import { Logo } from "@/components/site/header"
 
 export default function NotFound() {
   return (
-    <div className="min-h-[70vh] bg-stone-50 flex items-center">
-      <PageContainer narrow>
-        <div className="text-center py-20">
-          <div className="w-20 h-20 bg-teal-50 rounded-full flex items-center justify-center mx-auto mb-6">
-            <Search className="h-10 w-10 text-teal-300" />
-          </div>
-          <h1 className="text-4xl font-bold text-stone-900 mb-4">Page Not Found</h1>
-          <p className="text-stone-500 text-lg mb-8 max-w-md mx-auto leading-relaxed">
-            We couldn't find the page you're looking for. If you need help, please don't hesitate to reach out.
-          </p>
-          <div className="flex flex-wrap justify-center gap-3">
-            <Button asChild><Link href="/"><Home className="h-4 w-4" />Go Home</Link></Button>
-            <Button variant="outline" asChild><Link href="/get-help"><Shield className="h-4 w-4" />Get Help</Link></Button>
-            <Button variant="outline" asChild><Link href="/resources"><ArrowRight className="h-4 w-4" />Browse Resources</Link></Button>
-          </div>
-        </div>
-      </PageContainer>
-    </div>
+    <main id="main" className="flex min-h-dvh flex-col items-center justify-center px-4 py-16 text-center">
+      <Link href="/" aria-label="Restored Bloom home">
+        <Logo />
+      </Link>
+      <Sprig className="mt-10 h-40" />
+      <h1 className="mt-6 text-4xl text-plum-900 sm:text-5xl">We couldn&apos;t find that page</h1>
+      <p className="mt-4 max-w-md text-lg leading-relaxed text-plum-700">
+        It may have moved, or the link may be incorrect. These pages might help:
+      </p>
+      <div className="mt-8 flex flex-wrap justify-center gap-3">
+        <Link href="/" className={buttonVariants()}>
+          Homepage
+        </Link>
+        <Link href="/resources" className={buttonVariants({ variant: "outline" })}>
+          Resources
+        </Link>
+        <Link href="/support" className={buttonVariants({ variant: "outline" })}>
+          Finding support
+        </Link>
+      </div>
+    </main>
   )
 }

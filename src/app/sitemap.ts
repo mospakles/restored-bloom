@@ -1,28 +1,34 @@
-import { MetadataRoute } from "next"
-import { SITE_CONFIG, SAMPLE_RESOURCES } from "@/lib/data"
+import type { MetadataRoute } from "next"
+import { connection } from "next/server"
+import { prisma } from "@/lib/db"
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const base = SITE_CONFIG.url
+const STATIC_PATHS = [
+  "",
+  "/about",
+  "/programmes",
+  "/invite-us",
+  "/get-involved",
+  "/support-our-work",
+  "/resources",
+  "/events",
+  "/contact",
+  "/support",
+  "/policies/privacy",
+  "/policies/safeguarding",
+  "/policies/terms",
+  "/policies/accessibility",
+]
 
-  const staticPages = [
-    "", "about", "mission", "get-help", "resources", "anonymous-stories",
-    "volunteer", "contact", "faq", "donate", "partnerships",
-    "sexual-abuse-support", "womens-health", "teen-support", "parent-resources", "faith-healing",
-    "privacy", "terms", "safeguarding", "child-protection",
-    "auth/login", "auth/register",
-  ].map((path) => ({
-    url: `${base}/${path}`,
-    lastModified: new Date(),
-    changeFrequency: "monthly" as const,
-    priority: path === "" ? 1 : 0.8,
-  }))
-
-  const resourcePages = SAMPLE_RESOURCES.map((r) => ({
-    url: `${base}/resources/${r.slug}`,
-    lastModified: new Date(r.updated_at),
-    changeFrequency: "weekly" as const,
-    priority: 0.7,
-  }))
-
-  return [...staticPages, ...resourcePages]
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  await connection()
+  const base = (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").replace(/\/$/, "")
+  const [resources, events] = await Promise.all([
+    prisma.resource.findMany({ where: { status: "PUBLISHED" }, select: { slug: true, updatedAt: true } }),
+    prisma.event.findMany({ where: { status: { in: ["PUBLISHED", "CANCELLED"] } }, select: { slug: true, updatedAt: true } }),
+  ])
+  return [
+    ...STATIC_PATHS.map((p) => ({ url: `${base}${p}`, priority: p === "" ? 1 : 0.7 })),
+    ...resources.map((r) => ({ url: `${base}/resources/${r.slug}`, lastModified: r.updatedAt, priority: 0.6 })),
+    ...events.map((e) => ({ url: `${base}/events/${e.slug}`, lastModified: e.updatedAt, priority: 0.5 })),
+  ]
 }

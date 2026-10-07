@@ -1,0 +1,349 @@
+// Restored Bloom data model.
+// Run `npm run db:migrate` after changing this file.
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ─── Authentication (managed by Better Auth) ─────────────────────────────────
+
+model User {
+  id            String    @id
+  name          String
+  email         String    @unique
+  emailVerified Boolean   @default(false)
+  image         String?
+  /// ADMIN | EDITOR | COORDINATOR — see src/lib/permissions.ts
+  role          String    @default("COORDINATOR")
+  /// Deactivated users cannot sign in.
+  active        Boolean   @default(true)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  sessions          Session[]
+  accounts          Account[]
+  assignedEnquiries Enquiry[]      @relation("EnquiryAssignee")
+  notes             EnquiryNote[]
+  auditLogs         AuditLog[]
+
+  @@map("user")
+}
+
+model Session {
+  id        String   @id
+  expiresAt DateTime
+  token     String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  ipAddress String?
+  userAgent String?
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("session")
+}
+
+model Account {
+  id                    String    @id
+  accountId             String
+  providerId            String
+  userId                String
+  user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  accessToken           String?
+  refreshToken          String?
+  idToken               String?
+  accessTokenExpiresAt  DateTime?
+  refreshTokenExpiresAt DateTime?
+  scope                 String?
+  password              String?
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+
+  @@index([userId])
+  @@map("account")
+}
+
+model Verification {
+  id         String   @id
+  identifier String
+  value      String
+  expiresAt  DateTime
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@index([identifier])
+  @@map("verification")
+}
+
+model RateLimit {
+  id          String @id
+  key         String @unique
+  count       Int
+  lastRequest BigInt
+
+  @@map("rateLimit")
+}
+
+// ─── Enquiries ───────────────────────────────────────────────────────────────
+
+enum EnquiryType {
+  OUTREACH
+  VOLUNTEER
+  PARTNER
+  SPONSOR
+  CONTACT
+}
+
+enum EnquiryStatus {
+  NEW
+  IN_REVIEW
+  CONTACTED
+  APPROVED
+  CLOSED
+}
+
+model Enquiry {
+  id             String        @id @default(cuid())
+  reference      String        @unique
+  type           EnquiryType
+  status         EnquiryStatus @default(NEW)
+  name           String
+  email          String
+  phone          String?
+  organisation   String?
+  /// Type-specific fields, validated by the schemas in src/lib/validation.
+  details        Json
+  message        String?
+  consentVersion String
+  consentAt      DateTime
+  assignedToId   String?
+  assignedTo     User?         @relation("EnquiryAssignee", fields: [assignedToId], references: [id], onDelete: SetNull)
+  closedAt       DateTime?
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+
+  notes EnquiryNote[]
+
+  @@index([type, status])
+  @@index([createdAt])
+  @@index([assignedToId])
+}
+
+model EnquiryNote {
+  id        String   @id @default(cuid())
+  enquiryId String
+  enquiry   Enquiry  @relation(fields: [enquiryId], references: [id], onDelete: Cascade)
+  authorId  String?
+  author    User?    @relation(fields: [authorId], references: [id], onDelete: SetNull)
+  body      String
+  createdAt DateTime @default(now())
+
+  @@index([enquiryId])
+}
+
+// ─── Content ─────────────────────────────────────────────────────────────────
+
+enum PublishStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
+enum ResourceCategory {
+  CHILDREN
+  TEENAGERS
+  PARENTS
+  EDUCATORS
+  SURVIVORS
+}
+
+model Resource {
+  id          String           @id @default(cuid())
+  title       String
+  slug        String           @unique
+  summary     String
+  /// Markdown
+  body        String
+  category    ResourceCategory
+  status      PublishStatus    @default(DRAFT)
+  /// Who reviewed the content for accuracy and age-appropriateness.
+  reviewNote  String?
+  fileId      String?          @unique
+  file        ResourceFile?    @relation(fields: [fileId], references: [id], onDelete: SetNull)
+  publishedAt DateTime?
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+
+  @@index([status, category])
+}
+
+/// Downloadable materials are stored in the database so the site does not
+/// depend on external object storage. Files are size- and type-checked on upload.
+model ResourceFile {
+  id        String    @id @default(cuid())
+  filename  String
+  mimeType  String
+  size      Int
+  data      Bytes
+  createdAt DateTime  @default(now())
+  resource  Resource?
+}
+
+enum EventStatus {
+  DRAFT
+  PUBLISHED
+  CANCELLED
+  ARCHIVED
+}
+
+model Event {
+  id                  String              @id @default(cuid())
+  title               String
+  slug                String              @unique
+  summary             String
+  /// Markdown
+  description         String
+  startsAt            DateTime
+  endsAt              DateTime?
+  location            String
+  isOnline            Boolean             @default(false)
+  audience            String?
+  /// null = unlimited
+  capacity            Int?
+  registrationOpen    Boolean             @default(true)
+  status              EventStatus         @default(DRAFT)
+  publishedAt         DateTime?
+  createdAt           DateTime            @default(now())
+  updatedAt           DateTime            @updatedAt
+  registrations       EventRegistration[]
+
+  @@index([status, startsAt])
+}
+
+enum RegistrationStatus {
+  CONFIRMED
+  CANCELLED
+}
+
+model EventRegistration {
+  id             String             @id @default(cuid())
+  eventId        String
+  event          Event              @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  name           String
+  /// Stored lower-cased to enforce one registration per email per event.
+  email          String
+  phone          String?
+  organisation   String?
+  role           String?
+  status         RegistrationStatus @default(CONFIRMED)
+  consentVersion String
+  consentAt      DateTime
+  createdAt      DateTime           @default(now())
+  updatedAt      DateTime           @updatedAt
+
+  @@unique([eventId, email])
+  @@index([eventId, status])
+}
+
+/// Editable long-form pages (policies, support information).
+model Page {
+  slug       String   @id
+  title      String
+  /// Markdown
+  body       String
+  /// Pages stay flagged as drafts until a founder/professional review is recorded.
+  reviewed   Boolean  @default(false)
+  reviewedAt DateTime?
+  reviewNote String?
+  updatedAt  DateTime @updatedAt
+  createdAt  DateTime @default(now())
+}
+
+enum SupportContactKind {
+  EMERGENCY
+  HELPLINE
+  REFERRAL
+}
+
+/// Organisations shown on the Support Information page. Only rows that are
+/// both verified and published are ever displayed publicly.
+model SupportContact {
+  id           String             @id @default(cuid())
+  name         String
+  kind         SupportContactKind
+  description  String
+  phone        String?
+  website      String?
+  area         String?
+  /// Required wording if there is no formal partnership.
+  relationship String             @default("Listed for information only. Not a formal partner of Restored Bloom.")
+  verified     Boolean            @default(false)
+  verifiedAt   DateTime?
+  verifiedNote String?
+  published    Boolean            @default(false)
+  sortOrder    Int                @default(0)
+  createdAt    DateTime           @default(now())
+  updatedAt    DateTime           @updatedAt
+}
+
+model Setting {
+  key       String   @id
+  value     Json
+  updatedAt DateTime @updatedAt
+}
+
+// ─── Newsletter ──────────────────────────────────────────────────────────────
+
+enum SubscriberStatus {
+  PENDING
+  SUBSCRIBED
+  UNSUBSCRIBED
+}
+
+model Subscriber {
+  id             String           @id @default(cuid())
+  email          String           @unique
+  status         SubscriberStatus @default(PENDING)
+  /// SHA-256 of the token sent by email (confirm + unsubscribe).
+  tokenHash      String           @unique
+  consentText    String
+  consentVersion String
+  consentAt      DateTime
+  confirmedAt    DateTime?
+  unsubscribedAt DateTime?
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+}
+
+// ─── Operations ──────────────────────────────────────────────────────────────
+
+/// Audit trail. Never store submission contents here — identifiers and
+/// changed field names only.
+model AuditLog {
+  id         String   @id @default(cuid())
+  actorId    String?
+  actor      User?    @relation(fields: [actorId], references: [id], onDelete: SetNull)
+  actorEmail String?
+  action     String
+  entityType String
+  entityId   String?
+  metadata   Json?
+  createdAt  DateTime @default(now())
+
+  @@index([createdAt])
+  @@index([entityType, entityId])
+}
+
+/// Fixed-window throttle for public forms. Keys contain a keyed hash of the
+/// client IP, never the raw address.
+model FormThrottle {
+  key         String   @id
+  count       Int
+  windowStart DateTime
+}

@@ -1,1 +1,22 @@
+# dependencies
 node_modules
+
+# next.js
+/.next/
+/out/
+next-env.d.ts
+*.tsbuildinfo
+
+# environment — never commit secrets
+.env
+.env*.local
+.env.test
+
+# generated
+/src/generated/
+
+# misc
+.DS_Store
+*.pem
+npm-debug.log*
+coverage/
