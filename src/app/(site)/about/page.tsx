@@ -20,10 +20,10 @@ export default async function AboutPage() {
   const settings = await getSettings()
   return (
     <>
-      <PageHero accent="dusk" art="roots" eyebrow="About Restored Bloom" title="Every child deserves to grow up safe, informed and heard">
+      <PageHero accent="dusk" eyebrow="About Restored Bloom" title="Every child deserves to grow up safe, informed and heard">
         <p>
           Restored Bloom is a foundation based in {SITE.city}, focused on sexual abuse awareness, prevention
-          education and survivor support, and ready to help wherever it&apos;s needed.
+          education and survivor support, ready to help wherever it&apos;s needed.
         </p>
       </PageHero>
 
@@ -32,7 +32,7 @@ export default async function AboutPage() {
           <SectionHeading eyebrow="Our story" title="Why Restored Bloom exists" />
           <div className="space-y-5 text-lg leading-relaxed text-plum-800">
             <p>
-              Sexual abuse is too often surrounded by silence: silence that leaves children without the words to
+              Sexual abuse is too often surrounded by silence — silence that leaves children without the words to
               describe what is happening to them, adults without the confidence to respond, and survivors without the
               support and dignity they deserve.
             </p>
