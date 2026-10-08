@@ -16,7 +16,7 @@ export default async function GetInvolvedPage() {
   await connection()
   return (
     <>
-      <PageHero accent="lagoon" eyebrow="Get involved" title="There's a place for you in this work">
+      <PageHero accent="lagoon" art="together" eyebrow="Get involved" title="There's a place for you in this work">
         <p>Whether you can offer time, professional expertise or support, we&apos;d love to hear from you.</p>
       </PageHero>
 
@@ -69,7 +69,7 @@ export default async function GetInvolvedPage() {
             <SectionHeading eyebrow="Partner" title="Collaborate with us">
               <p>
                 We&apos;re keen to work with schools, faith communities, qualified professionals, support organisations and community
-                groups especially organisations that can offer professional support or referral pathways for
+                groups, especially organisations that can offer professional support or referral pathways for
                 survivors.
               </p>
             </SectionHeading>

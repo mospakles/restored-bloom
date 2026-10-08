@@ -35,10 +35,11 @@ function Label({ htmlFor, children, required }: { htmlFor: string; children: Rea
   )
 }
 
-function Hint({ id, children }: { id: string; children?: React.ReactNode }) {
+/** Field hint. Text inputs show it below the box so side-by-side fields stay aligned. */
+function Hint({ id, children, below = false }: { id: string; children?: React.ReactNode; below?: boolean }) {
   if (!children) return null
   return (
-    <p id={id} className="mb-2 text-sm leading-snug text-plum-600">
+    <p id={id} className={cn("text-sm leading-snug text-plum-600", below ? "mt-1.5" : "mb-2")}>
       {children}
     </p>
   )
@@ -71,7 +72,6 @@ export function TextField({
       <Label htmlFor={f.id} required={required}>
         {label}
       </Label>
-      <Hint id={f.hintId}>{hint}</Hint>
       <input
         id={f.id}
         name={name}
@@ -83,6 +83,7 @@ export function TextField({
         className={cn(control, "h-11", f.error ? "border-rose-500" : "border-cream-400")}
         {...rest}
       />
+      <Hint id={f.hintId} below>{hint}</Hint>
       <ErrorText id={f.errorId} error={f.error} />
     </div>
   )
@@ -105,7 +106,6 @@ export function TextArea({
       <Label htmlFor={f.id} required={required}>
         {label}
       </Label>
-      <Hint id={f.hintId}>{hint}</Hint>
       <textarea
         id={f.id}
         name={name}
@@ -118,6 +118,7 @@ export function TextArea({
         className={cn(control, "min-h-28 resize-y", f.error ? "border-rose-500" : "border-cream-400")}
         {...rest}
       />
+      <Hint id={f.hintId} below>{hint}</Hint>
       <ErrorText id={f.errorId} error={f.error} />
     </div>
   )
@@ -142,7 +143,6 @@ export function SelectField({
       <Label htmlFor={f.id} required={required}>
         {label}
       </Label>
-      <Hint id={f.hintId}>{hint}</Hint>
       <select
         id={f.id}
         name={name}
@@ -159,6 +159,7 @@ export function SelectField({
           </option>
         ))}
       </select>
+      <Hint id={f.hintId} below>{hint}</Hint>
       <ErrorText id={f.errorId} error={f.error} />
     </div>
   )

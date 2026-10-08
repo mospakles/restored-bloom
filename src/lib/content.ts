@@ -176,12 +176,12 @@ export const OUTREACH_STEPS = [
 
 /** The kinds of places Restored Bloom can be invited to. */
 export const WHERE_WE_HELP = [
-  { title: "Schools", body: "Primary and secondary schools, colleges and their parent communities." },
-  { title: "Faith communities", body: "Churches, mosques and faith groups services, youth meetings and family programmes." },
-  { title: "Communities", body: "Residents' associations, community leaders, markets and town-hall gatherings." },
-  { title: "Youth groups", body: "Clubs, camps, youth fellowships and after-school programmes." },
-  { title: "Organisations & workplaces", body: "NGOs, businesses and public bodies, with staff awareness and safeguarding briefings." },
-  { title: "Families & parents", body: "Parents' groups, PTAs and caregivers who want to protect the children in their care." },
+  { icon: "school", title: "Schools", body: "Primary and secondary schools, colleges and their parent communities." },
+  { icon: "faith", title: "Faith communities", body: "Churches, mosques and faith groups, at services, youth meetings and family programmes." },
+  { icon: "community", title: "Communities", body: "Residents' associations, community leaders, markets and town-hall gatherings." },
+  { icon: "youth", title: "Youth groups", body: "Clubs, camps, youth fellowships and after-school programmes." },
+  { icon: "workplace", title: "Organisations & workplaces", body: "NGOs, businesses and public bodies, with staff awareness and safeguarding briefings." },
+  { icon: "family", title: "Families & parents", body: "Parents' groups, PTAs and caregivers who want to protect the children in their care." },
 ] as const
 
 export const VALUES = [

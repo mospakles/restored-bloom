@@ -1,8 +1,21 @@
 import type { Metadata } from "next"
 import { connection } from "next/server"
-import { CalendarCheck, ClipboardList, MapPin, ShieldCheck, Sparkles, Users } from "lucide-react"
+import Link from "next/link"
+import {
+  ArrowRight,
+  Building2,
+  CalendarCheck,
+  Church,
+  ClipboardList,
+  House,
+  Landmark,
+  MapPin,
+  School,
+  ShieldCheck,
+  Sparkles,
+  Users,
+} from "lucide-react"
 import { Container, SectionHeading } from "@/components/ui/misc"
-import { BloomMark } from "@/components/site/botanical"
 import { PageHero, Steps } from "@/components/site/blocks"
 import { OutreachRequestForm } from "@/components/forms/public-forms"
 import { OUTREACH_STEPS, WHERE_WE_HELP } from "@/lib/content"
@@ -13,6 +26,24 @@ export const metadata: Metadata = {
   description:
     "Invite Restored Bloom to deliver sexual abuse awareness and prevention sessions at your school, church, mosque, community, youth group, organisation or workplace.",
 }
+
+const HOST_ICONS = {
+  school: School,
+  faith: Church,
+  community: Landmark,
+  youth: Users,
+  workplace: Building2,
+  family: House,
+} as const
+
+const HOST_TINTS = [
+  "bg-gold-50 text-gold-700 ring-gold-100",
+  "bg-lagoon-50 text-lagoon-700 ring-lagoon-100",
+  "bg-sage-50 text-sage-700 ring-sage-100",
+  "bg-plum-50 text-plum-700 ring-plum-100",
+  "bg-rose-50 text-rose-700 ring-rose-100",
+  "bg-gold-50 text-gold-700 ring-gold-100",
+]
 
 const FORMAT = [
   {
@@ -51,22 +82,40 @@ export default async function InviteUsPage() {
       <section className="py-16">
         <Container>
           <SectionHeading eyebrow="Where we can help" title="Invite us to your…" />
-          <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {WHERE_WE_HELP.map((w) => (
-              <li key={w.title} className="flex gap-4 rounded-3xl card-soft p-6">
-                <BloomMark className="h-7 w-7 shrink-0 text-gold-400" />
-                <div>
-                  <h3 className="text-xl text-plum-900">{w.title}</h3>
-                  <p className="mt-1.5 leading-relaxed text-plum-700">{w.body}</p>
-                </div>
-              </li>
-            ))}
+          <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {WHERE_WE_HELP.map((w, i) => {
+              const Icon = HOST_ICONS[w.icon]
+              return (
+                <li key={w.title}>
+                  <article className="card-soft card-hover group flex h-full flex-col rounded-[1.75rem] p-7">
+                    <span
+                      className={`inline-flex h-12 w-12 items-center justify-center rounded-2xl ring-4 ${HOST_TINTS[i % HOST_TINTS.length]}`}
+                    >
+                      <Icon className="icon-nudge h-5 w-5" aria-hidden="true" />
+                    </span>
+                    <h3 className="mt-6 text-[1.3rem] leading-snug text-plum-900">{w.title}</h3>
+                    <p className="mt-2 leading-relaxed text-plum-700">{w.body}</p>
+                  </article>
+                </li>
+              )
+            })}
           </ul>
-          <p className="mt-8 flex items-start gap-2 text-plum-700">
-            <MapPin className="mt-1 h-4 w-4 shrink-0 text-lagoon-700" aria-hidden="true" />
-            We&apos;re based in Lagos. If you&apos;re further afield, still get in touch and we&apos;ll talk about how we can
-            help, including online sessions.
-          </p>
+          <div className="mt-8 flex flex-col gap-4 rounded-[1.75rem] border border-lagoon-100 bg-lagoon-50/70 px-6 py-5 sm:flex-row sm:items-center sm:justify-between">
+            <p className="flex items-start gap-3 text-plum-800">
+              <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-lagoon-700" aria-hidden="true" />
+              <span>
+                We&apos;re based in Lagos. Further afield? Get in touch and we&apos;ll talk about how we can help, including
+                online sessions.
+              </span>
+            </p>
+            <Link
+              href="#enquire"
+              className="group inline-flex shrink-0 items-center gap-1.5 font-semibold text-lagoon-700 hover:text-lagoon-800"
+            >
+              Send an invitation
+              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />
+            </Link>
+          </div>
         </Container>
       </section>
 

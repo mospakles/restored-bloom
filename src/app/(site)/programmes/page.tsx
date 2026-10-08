@@ -3,9 +3,9 @@ import Link from "next/link"
 import { connection } from "next/server"
 import { Check } from "lucide-react"
 import { buttonVariants } from "@/components/ui/button"
-import { Container, Notice } from "@/components/ui/misc"
+import { Container } from "@/components/ui/misc"
 import { PageHero, ProgrammeStatusBadge } from "@/components/site/blocks"
-import { PROGRAMME_STATUS_LABELS, PROGRAMMES } from "@/lib/content"
+import { PROGRAMMES } from "@/lib/content"
 import { getSettings } from "@/server/settings"
 
 export const metadata: Metadata = {
@@ -28,18 +28,7 @@ export default async function ProgrammesPage() {
       </PageHero>
 
       <Container className="py-12">
-        <Notice tone="info" title="Programme status">
-          Each programme is labelled{" "}
-          {Object.values(PROGRAMME_STATUS_LABELS)
-            .map((l) => `"${l}"`)
-            .join(", ")
-            .replace(/, ([^,]*)$/, " or $1")}{" "}
-          so you can see exactly what is currently available. Preventing abuse is always the responsibility of adults, so
-          our sessions for children focus on understanding and help-seeking, never on making children responsible for
-          their own protection.
-        </Notice>
-
-        <nav aria-label="Programmes on this page" className="mt-8">
+        <nav aria-label="Programmes on this page">
           <ul className="flex flex-wrap gap-2">
             {PROGRAMMES.map((p) => (
               <li key={p.id}>

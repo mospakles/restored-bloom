@@ -3,10 +3,10 @@ import { ArrowRight, BookOpen, Building2, Church, House, LifeBuoy, School, Shiel
 import { buttonVariants } from "@/components/ui/button"
 import { Container, SectionHeading } from "@/components/ui/misc"
 import { BloomMark, Gathering, HeroBloom } from "@/components/site/botanical"
-import { CtaBand, HeroBackdrop, HeroCurve, ProgrammeCard, Steps } from "@/components/site/blocks"
+import { CtaBand, FloatingPetals, HeroBackdrop, HeroCurve, ProgrammeCard, Steps } from "@/components/site/blocks"
 import { FounderProfile } from "@/components/site/founder"
 import { NewsletterForm } from "@/components/forms/public-forms"
-import { OUTREACH_STEPS, PROGRAMMES, SITE } from "@/lib/content"
+import { OUTREACH_STEPS, PROGRAMMES } from "@/lib/content"
 import { createFormToken } from "@/lib/security"
 import { getSettings } from "@/server/settings"
 import { isNewsletterAvailable } from "@/server/newsletter"
@@ -33,13 +33,23 @@ export default async function HomePage() {
           <div className="stagger relative z-10">
             <p className="inline-flex items-center gap-3 text-xs font-bold uppercase tracking-[0.28em] text-gold-200">
               <span className="h-px w-10 bg-gradient-to-r from-transparent to-gold-300" aria-hidden="true" />
-              A foundation · Lagos, Nigeria
+              A foundation for every child
             </p>
 
             <h1 className="mt-7 text-[3.2rem] leading-[1.0] tracking-[-0.012em] text-cream-50 sm:text-7xl xl:text-[5.8rem]">
               Every child deserves to{" "}
-              <span className="bg-gradient-to-r from-gold-200 via-gold-300 to-[#e08a5a] bg-clip-text pr-2 italic text-transparent">
-                bloom
+              <span className="inline-block whitespace-nowrap pr-2 italic">
+                <span className="sr-only">bloom</span>
+                {"bloom".split("").map((ch, i) => (
+                  <span
+                    key={i}
+                    aria-hidden="true"
+                    className="-mx-[0.07em] inline-block bg-gradient-to-r from-gold-200 via-gold-300 to-[#e08a5a] bg-clip-text px-[0.07em] text-transparent motion-safe:animate-letter-wave"
+                    style={{ backgroundSize: "500% 100%", backgroundPosition: `${i * 25}% 0`, animationDelay: `${i * 0.12}s` }}
+                  >
+                    {ch}
+                  </span>
+                ))}
               </span>{" "}
               safely.
             </h1>
@@ -56,12 +66,13 @@ export default async function HomePage() {
             <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
               <Link
                 href="/invite-us#enquire"
+                data-burst
                 className={buttonVariants({ size: "lg", variant: "light", className: "group shadow-xl shadow-black/25" })}
               >
                 Invite us
                 <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />
               </Link>
-              <Link href="/get-involved#partner" className={buttonVariants({ size: "lg", variant: "outline-light" })}>
+              <Link href="/get-involved#partner" data-burst className={buttonVariants({ size: "lg", variant: "outline-light" })}>
                 Partner with us
               </Link>
               <Link
@@ -74,7 +85,7 @@ export default async function HomePage() {
             </div>
           </div>
 
-          <div className="relative -mx-10 sm:mx-0 lg:-mr-24">
+          <div className="parallax-soft relative -mx-10 sm:mx-0 lg:-mr-24">
             <HeroBloom palette="warm" className="mx-auto w-full max-w-[34rem] motion-safe:animate-[bloom-in_1.4s_ease-out_both] lg:max-w-none" />
           </div>
         </Container>
@@ -114,19 +125,19 @@ export default async function HomePage() {
                   <span
                     className={
                       i % 2 === 0
-                        ? "px-8 font-display text-5xl italic text-plum-900 sm:text-7xl"
-                        : "px-8 font-display text-5xl text-transparent [-webkit-text-stroke:1.5px_var(--color-lagoon-500)] sm:text-7xl"
+                        ? "wiggle-hover inline-block px-8 font-display text-5xl italic text-plum-900 sm:text-7xl"
+                        : "wiggle-hover inline-block px-8 font-display text-5xl text-transparent transition-colors duration-300 [-webkit-text-stroke:1.5px_var(--color-lagoon-500)] hover:text-lagoon-500 sm:text-7xl"
                     }
                   >
                     {w}
                   </span>
-                  <BloomMark className="h-7 w-7 shrink-0 text-gold-300 sm:h-9 sm:w-9" />
+                  <BloomMark className="h-7 w-7 shrink-0 text-gold-300 motion-safe:animate-[spin_12s_linear_infinite] sm:h-9 sm:w-9" />
                 </li>
               ))}
             </ul>
           ))}
         </div>
-        <p className="sr-only">Safe spaces, prevention, hope, dignity, healing, courage, trusted adults for every child.</p>
+        <p className="sr-only">Safe spaces, prevention, hope, dignity, healing, courage and trusted adults, for every child.</p>
         <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-cream-50 to-transparent" aria-hidden="true" />
         <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-cream-50 to-transparent" aria-hidden="true" />
       </section>
@@ -137,10 +148,9 @@ export default async function HomePage() {
           <div>
             <SectionHeading eyebrow="Who we are" title="Prevention starts with the adults around every child">
               <p>
-                Founded by {SITE.founder}, Restored Bloom is a new foundation. We&apos;re building our first programmes
-                and partnerships with schools, faith communities, organisations and qualified professionals, so that
-                children and young people can learn, gently, about personal boundaries, trusted adults and how to seek
-                help.
+                Restored Bloom works alongside schools, faith communities, organisations and qualified
+                professionals so that children and young people can learn, gently, about personal boundaries, trusted
+                adults and how to seek help.
               </p>
             </SectionHeading>
             <ul className="mt-9 space-y-4">
@@ -182,10 +192,11 @@ export default async function HomePage() {
         <div className="relative overflow-hidden rounded-[2.5rem] bg-gradient-to-b from-cream-100 to-[#f5ede2] py-20 sm:rounded-[3rem] sm:py-24">
           <div className="pointer-events-none absolute -right-32 -top-32 h-96 w-96 rounded-full bg-gold-100/80 blur-3xl" aria-hidden="true" />
           <div className="pointer-events-none absolute -bottom-40 -left-32 h-96 w-96 rounded-full bg-lagoon-100/70 blur-3xl" aria-hidden="true" />
+          <FloatingPetals />
           <Container className="relative">
             <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
               <SectionHeading eyebrow="Our programmes" title="Awareness that grows with every age">
-                <p>Each programme shows its current status, so you always know what is running and what is planned.</p>
+                <p>From early childhood to adulthood, every session is shaped around the people in the room.</p>
               </SectionHeading>
               <Link href="/programmes" className={buttonVariants({ variant: "outline", className: "shrink-0 bg-white/60" })}>
                 All programmes

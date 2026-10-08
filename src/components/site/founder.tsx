@@ -1,5 +1,4 @@
 import { BloomMark } from "@/components/site/botanical"
-import { DraftFlag } from "@/components/ui/misc"
 import { SITE } from "@/lib/content"
 import type { SiteSettings } from "@/server/settings"
 
@@ -23,11 +22,6 @@ export function FounderProfile({ settings, headingLevel = "h3" }: { settings: Si
         <div>
           <p className="text-xs font-bold uppercase tracking-[0.18em] text-lagoon-700">Meet our founder</p>
           <H className="mt-3 text-3xl text-plum-900 sm:text-[2.4rem]">{SITE.founder}</H>
-          {!settings.founderBioApproved && (
-            <p className="mt-3">
-              <DraftFlag>Biography draft, awaiting founder confirmation</DraftFlag>
-            </p>
-          )}
           <div className="mt-5 space-y-4 text-lg leading-relaxed text-plum-800">
             {bio.split(/\n{2,}/).map((para, i) => (
               <p key={i}>{para}</p>

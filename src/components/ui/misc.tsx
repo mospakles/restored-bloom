@@ -28,6 +28,7 @@ const BADGE_TONES = {
   plum: "bg-plum-100 text-plum-800",
   rose: "bg-rose-100 text-lagoon-800",
   sage: "bg-sage-100 text-sage-800",
+  gold: "bg-gold-100 text-gold-700",
   cream: "bg-cream-200 text-plum-800",
   amber: "bg-amber-100 text-amber-900",
   outline: "border border-plum-200 text-plum-700",

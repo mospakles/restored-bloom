@@ -20,7 +20,7 @@ export default async function AboutPage() {
   const settings = await getSettings()
   return (
     <>
-      <PageHero accent="dusk" eyebrow="About Restored Bloom" title="Every child deserves to grow up safe, informed and heard">
+      <PageHero accent="dusk" art="roots" eyebrow="About Restored Bloom" title="Every child deserves to grow up safe, informed and heard">
         <p>
           Restored Bloom is a foundation based in {SITE.city}, focused on sexual abuse awareness, prevention
           education and survivor support, ready to help wherever it&apos;s needed.
@@ -32,7 +32,7 @@ export default async function AboutPage() {
           <SectionHeading eyebrow="Our story" title="Why Restored Bloom exists" />
           <div className="space-y-5 text-lg leading-relaxed text-plum-800">
             <p>
-              Sexual abuse is too often surrounded by silence — silence that leaves children without the words to
+              Sexual abuse is too often surrounded by silence: silence that leaves children without the words to
               describe what is happening to them, adults without the confidence to respond, and survivors without the
               support and dignity they deserve.
             </p>
@@ -42,8 +42,9 @@ export default async function AboutPage() {
               feel confident that telling someone is always the right thing to do.
             </p>
             <p>
-              We are at the beginning of this work. We are developing our programmes carefully, with input from
-              educators and qualified professionals, and we will only describe as running what is genuinely running.
+              Every programme is shaped with educators and qualified professionals, so that what we bring into a
+              classroom, a hall or a home is safe, age-appropriate and genuinely helpful. We would rather do this work
+              carefully than quickly, because the children and families we serve deserve nothing less.
             </p>
           </div>
         </Container>

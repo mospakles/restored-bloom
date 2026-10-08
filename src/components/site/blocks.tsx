@@ -98,9 +98,10 @@ export function PageHero({
 
 const ICONS = { seedling: Sprout, leaf: Leaf, people: Users, community: HandHeart, heart: Heart } as const
 
+/** Shown only once a programme is piloting or running; planned programmes carry no badge. */
 export function ProgrammeStatusBadge({ status }: { status: ProgrammeStatus }) {
-  const tone = status === "operating" ? "sage" : status === "piloting" ? "rose" : "cream"
-  return <Badge tone={tone}>{PROGRAMME_STATUS_LABELS[status]}</Badge>
+  if (status === "planned") return null
+  return <Badge tone={status === "operating" ? "sage" : "gold"}>{PROGRAMME_STATUS_LABELS[status]}</Badge>
 }
 
 const TINTS = [
